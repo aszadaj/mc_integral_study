@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="report_code"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mc_integral_study">
+				<Option output="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/cmake-build-debug/mc_integral_study" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 mc_integral_study"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mc_integral_study/fast">
+				<Option output="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/cmake-build-debug/mc_integral_study" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 mc_integral_study/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aszadaj/Desktop/SI2530\ Computational\ Physics/Project/mc_integral_study/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.cc">
+			<Option target="mc_integral_study"/>
+		</Unit>
+		<Unit filename="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.hh">
+			<Option target="mc_integral_study"/>
+		</Unit>
+		<Unit filename="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/main.cpp">
+			<Option target="mc_integral_study"/>
+		</Unit>
+		<Unit filename="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
