@@ -10,25 +10,21 @@ void obtainIntegralValue(double * parameters [], std::string * functionStrings [
 
     NumericalMethods calculations = NumericalMethods(parameters, functionStrings);
 
-    std::cout << std::endl;
+    printIntegralInformation(functionStrings, &calculations);
 
-    std::cout << "Integral: int(" << functionStrings[0] << ","<< calculations.getA() <<","<< calculations.getB();
-    std::cout << ",x) / int("<< *functionStrings[1] <<","<< calculations.getA() <<","<< calculations.getB() << ",x)";
-    std::cout << "Density function: " << *functionStrings[2] << std::endl;
-    std::cout << "Analytical solution: " << calculations.getAnalyticalSolution() << std::endl;
-    std::cout << "Number of samples: " << calculations.getSamples() << std::endl << std::endl;
+    calculations.simpson();
+    calculations.simpleMonteCarlo();
+    calculations.metropolis();
 
-    // Integral slicing methods
-    calculations.rectangularMethod();
-    calculations.trapezoidalMethod();
-    calculations.simpsonMethod();
 
-    // Probability integrals
-    calculations.monteCarloMeanSampleMethod();
-    calculations.monteCarloHitOrMissMethod();
-    calculations.metropolisMethod();
+}
 
-    std::cout << std::endl << std::endl;
+void printIntegralInformation(std::string * functionStrings [], NumericalMethods * calculations){
 
+    std::cout << std::endl << "Integral: int(" << *functionStrings[0] << "*"<< *functionStrings[1] <<",";
+    std::cout << calculations->a << "," << calculations->b << ",x) / int("<< *functionStrings[1] <<",";
+    std::cout << calculations->a <<","<< calculations->b << ",x)" << std::endl << "Density function: ";
+    std::cout << *functionStrings[2] << std::endl << "Analytical solution: " << calculations->analyticalSolution;
+    std::cout << std::endl << "Number of samples: " << calculations->samples << std::endl << std::endl;
 
 }

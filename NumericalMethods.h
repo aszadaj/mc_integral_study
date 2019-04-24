@@ -14,58 +14,37 @@
 class NumericalMethods {
 
 public:
-    double getA() const;
-
-    double getB() const;
-
-    unsigned int getSamples() const;
-
-    double getAnalyticalSolution() const;
-
-private:
-
-    // h = separation on x-axis
-    double h;
-    double timePassed;
-
-    // Ranges for the integral and its sum
-    // default ranges 0.00001, 10000
-
-    FunctionParser numeratorFunction;
-    FunctionParser denominatorFunction;
-    FunctionParser densityFunction;
 
     double a;
     double b;
-
     unsigned int samples;
-    double standardDeviationNumerator;
-    double standardDeviationDenominator;
     double analyticalSolution;
 
+private:
+
+    double stepSize;
+    double timePassed;
+
+    FunctionParser mainFunction;
+    FunctionParser weightFunction;
+    FunctionParser densityFunction;
+
     double integralResult;
-
-
 
 public:
 
 
     NumericalMethods(double * [], std::string * []);
 
-    void rectangularMethod();
-    void trapezoidalMethod();
-    void simpsonMethod();
-
-    void monteCarloMeanSampleMethod();
-    void monteCarloHitOrMissMethod();
-    void metropolisMethod();
+    void simpson();
+    void simpleMonteCarlo();
+    void metropolis();
 
     void startClock();
-    void stopClockAndPrintResults(std::string);
+    void stopClockAndPrintResults(std::string, double = 0.0);
 
-    double getMaximumValueIntegrand(bool = true);
     double getXPositionForMaximumValue();
-    void calculateStandardDeviation();
+    double calculateStandardError(double []);
 
 
 };

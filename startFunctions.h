@@ -8,5 +8,6 @@
 #include "NumericalMethods.cpp"
 
 void obtainIntegralValue(double * [], std::string * []);
+void printIntegralInformation(std::string * [], NumericalMethods *);
 
 #endif //REPORT_CODE_STARTFUNCTIONS_H
