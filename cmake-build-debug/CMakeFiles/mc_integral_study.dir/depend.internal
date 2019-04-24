@@ -10,9 +10,86 @@ CMakeFiles/mc_integral_study.dir/fparser4/fparser.cc.o
  /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.hh
  /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fpconfig.hh
 CMakeFiles/mc_integral_study.dir/main.cpp.o
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/Python.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/abstract.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/boolobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/bufferobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/bytearrayobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/bytesobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/cellobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/ceval.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/classobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/cobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/code.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/codecs.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/compile.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/complexobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/descrobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/dictobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/dtoa.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/enumobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/eval.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/fileobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/floatobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/funcobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/genobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/import.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/intobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/intrcheck.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/iterobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/listobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/longobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/memoryobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/methodobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/modsupport.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/moduleobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/object.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/objimpl.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/patchlevel.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pyarena.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pycapsule.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pyconfig.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pyctype.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pydebug.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pyerrors.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pyfpe.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pymacconfig.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pymath.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pymem.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pyport.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pystate.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pystrcmp.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pystrtod.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/pythonrun.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/rangeobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/setobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/sliceobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/stringobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/sysmodule.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/traceback.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/tupleobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/unicodeobject.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/warnings.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7/weakrefobject.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/__multiarray_api.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/_neighborhood_iterator_imp.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/_numpyconfig.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/arrayobject.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/ndarrayobject.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/ndarraytypes.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/noprefix.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/npy_common.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/npy_cpu.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/npy_endian.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/npy_interrupt.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/numpyconfig.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/old_defines.h
+ /Library/Python/2.7/site-packages/numpy/core/include/numpy/utils.h
  /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/NumericalMethods.cpp
  /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/NumericalMethods.h
  /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.hh
  /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/main.cpp
+ /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/matplotlibcpp.h
  /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/startFunctions.cpp
  /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/startFunctions.h

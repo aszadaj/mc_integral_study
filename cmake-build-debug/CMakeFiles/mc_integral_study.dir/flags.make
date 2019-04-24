@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sd
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/python2.7 -I/Library/Python/2.7/site-packages/numpy/core/include 
 

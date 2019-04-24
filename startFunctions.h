@@ -7,6 +7,6 @@
 
 #include "NumericalMethods.cpp"
 
-void obtainIntegralValue(std::string *, double []);
+void obtainIntegralValue(double * [], std::string * []);
 
 #endif //REPORT_CODE_STARTFUNCTIONS_H

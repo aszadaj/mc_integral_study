@@ -2,31 +2,28 @@
 
 int main(){
 
-    // Default functions
-    // 2*x*exp(-x^2), analytical solution 1.0
-    // 2*sin(1/x)^2, analytical solution M_PI
+    double lowerRange, higherRange, numberOfSamples, analyticalSolution;
+    double * parameters [] = {&lowerRange, &higherRange, &numberOfSamples, &analyticalSolution};
 
-    std::cout << std::endl;
+    std::string numeratorFunctionString, denominatorFunctionString, densityFunctionString;
+    std::string * functionStrings [] = {&numeratorFunctionString, &denominatorFunctionString, &densityFunctionString};
 
-    // lower range, higher range, number of samples and analytical solution
-    double parameters[] = {0.0, 1.0, 1000000.0, 0.0};
+    numeratorFunctionString = "x*exp(-x)";
+    denominatorFunctionString = "exp(-x)";
+    densityFunctionString = "0.5*exp(-x/2)";
+    lowerRange = 0.0;
+    higherRange = 10000.0;
+    analyticalSolution = 1.0;
+    numberOfSamples = 1.0e6;
 
-    // Define functions to be calculated
-    // Note: the functions have to chosen such the f(x) > 0 for x > 0
-    // and the sample number have to be even (Prerequisite for Simpson's method)
-    std::string modified_gaussian_function = "4*sqrt(1-x^2)";
-    parameters[3] = M_PI;
-    obtainIntegralValue(&modified_gaussian_function, parameters);
-
-
-    std::string oscillatory_sinus_function = "2*sin(1/x)^2";
-    parameters[0] = 0.001;
-    parameters[1] = 1000;
-    parameters[3] = 3.14129;
-    obtainIntegralValue(&oscillatory_sinus_function, parameters);
-
+    obtainIntegralValue(parameters, functionStrings);
 
     return 0;
 
-
 }
+
+
+
+// P(x) = int(p(y),-inf, x, y)
+
+//-exp(-x/2) {0, x} = 1-exp(-x/2) = r -> ln (1-r) = -x/2 -> x = -2*ln(r)

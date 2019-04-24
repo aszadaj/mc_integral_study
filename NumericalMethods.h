@@ -8,6 +8,7 @@
 #include <iostream>
 #include "fparser4/fparser.hh"
 #include <random>
+#include "matplotlibcpp.h"
 
 
 class NumericalMethods {
@@ -17,7 +18,7 @@ public:
 
     double getB() const;
 
-    int getSamples() const;
+    unsigned int getSamples() const;
 
     double getAnalyticalSolution() const;
 
@@ -30,34 +31,40 @@ private:
     // Ranges for the integral and its sum
     // default ranges 0.00001, 10000
 
-    FunctionParser fparser;
+    FunctionParser numeratorFunction;
+    FunctionParser denominatorFunction;
+    FunctionParser densityFunction;
+
     double a;
     double b;
 
-    int samples;
-    double standardDeviation;
+    unsigned int samples;
+    double standardDeviationNumerator;
+    double standardDeviationDenominator;
     double analyticalSolution;
 
-    double integralValue;
+    double integralResult;
 
 
 
 public:
 
 
-    NumericalMethods(double [], std::string *);
+    NumericalMethods(double * [], std::string * []);
 
-    void rectangular();
-    void trapezoidal();
-    void simpson();
+    void rectangularMethod();
+    void trapezoidalMethod();
+    void simpsonMethod();
 
-    void MCMeanIntegral();
-    void MCHitOrMissIntegral();
+    void monteCarloMeanSampleMethod();
+    void monteCarloHitOrMissMethod();
+    void metropolisMethod();
 
     void startClock();
     void stopClockAndPrintResults(std::string);
 
-    double getMaximumValue();
+    double getMaximumValueIntegrand(bool = true);
+    double getXPositionForMaximumValue();
     void calculateStandardDeviation();
 
 

@@ -6,25 +6,27 @@
 #include <string>
 
 
-void obtainIntegralValue(std::string * function, double parameters []){
+void obtainIntegralValue(double * parameters [], std::string * functionStrings []){
 
-    NumericalMethods calculations = NumericalMethods(parameters, &*function);
+    NumericalMethods calculations = NumericalMethods(parameters, functionStrings);
 
-    std::cout << "Integral for x = [" << calculations.getA() << "," << calculations.getB() << "] ";
-    std::cout << "of f(x) = " << *function << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Integral: int(" << functionStrings[0] << ","<< calculations.getA() <<","<< calculations.getB();
+    std::cout << ",x) / int("<< *functionStrings[1] <<","<< calculations.getA() <<","<< calculations.getB() << ",x)";
+    std::cout << "Density function: " << *functionStrings[2] << std::endl;
     std::cout << "Analytical solution: " << calculations.getAnalyticalSolution() << std::endl;
     std::cout << "Number of samples: " << calculations.getSamples() << std::endl << std::endl;
 
-
     // Integral slicing methods
-    calculations.rectangular();
-    calculations.trapezoidal();
-    calculations.simpson();
-
+    calculations.rectangularMethod();
+    calculations.trapezoidalMethod();
+    calculations.simpsonMethod();
 
     // Probability integrals
-    calculations.MCMeanIntegral();
-    calculations.MCHitOrMissIntegral();
+    calculations.monteCarloMeanSampleMethod();
+    calculations.monteCarloHitOrMissMethod();
+    calculations.metropolisMethod();
 
     std::cout << std::endl << std::endl;
 
