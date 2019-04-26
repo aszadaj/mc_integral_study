@@ -441,8 +441,6 @@ fparser4/fparser.hh
 /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.hh
 random
 -
-matplotlibcpp.h
-/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/matplotlibcpp.h
 
 /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.hh
 string
@@ -491,4 +489,6 @@ string
 /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/startFunctions.h
 NumericalMethods.cpp
 /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/NumericalMethods.cpp
+matplotlibcpp.h
+/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/matplotlibcpp.h
 

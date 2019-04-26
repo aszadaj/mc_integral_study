@@ -8,31 +8,39 @@
 #include <iostream>
 #include "fparser4/fparser.hh"
 #include <random>
-#include "matplotlibcpp.h"
 
 
 class NumericalMethods {
 
+    double stepSize;
+
+    FunctionParser integrandFunction;
+    FunctionParser densityFunction;
+    unsigned int samples;
+
 public:
 
-    double a;
-    double b;
-    unsigned int samples;
+
+
+    double lowerLimit;
+    double higherLimit;
+    unsigned int sampleLevel;
     double analyticalSolution;
-
-private:
-
-    double stepSize;
-    double timePassed;
-
-    FunctionParser mainFunction;
-    FunctionParser weightFunction;
-    FunctionParser densityFunction;
-
     double integralResult;
 
-public:
 
+
+    double standardError;
+    double errorFromRealResult;
+    double correlationTime;
+    double timePassed;
+    double errorLevel;
+    float delta;
+
+    double randomWalkTime;
+
+    bool printMessage;
+    bool CPUTimeAnalysis;
 
     NumericalMethods(double * [], std::string * []);
 
@@ -40,12 +48,19 @@ public:
     void simpleMonteCarlo();
     void metropolis();
 
-    void startClock();
-    void stopClockAndPrintResults(std::string, double = 0.0);
+    void startClock(double = 0.0);
+    void stopClock();
+    void printResults(std::string);
 
-    double getXPositionForMaximumValue();
-    double calculateStandardError(double []);
+    double getArgMax();
+    void getStandardError(double [], bool = true);
+    double getAutocorrelationValue(double [], int);
+    void createRandomWalk(double []);
+    unsigned int determineCorrelatedStep(double []);
+    unsigned int getSamples() const;
+    void setSamples(unsigned int samples);
 
+    void resetValues();
 
 };
 

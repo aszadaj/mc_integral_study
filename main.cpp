@@ -2,20 +2,18 @@
 
 int main() {
 
-    double lowerRange, higherRange, numberOfSamples, analyticalSolution;
-    double *parameters[] = {&lowerRange, &higherRange, &numberOfSamples, &analyticalSolution};
+    double  analyticalSolution, delta;
+    double  *parameters[] = {&analyticalSolution, &delta};
 
-    std::string mainFunctionString, weightFunctionString, densityFunctionString;
-    std::string *functionStrings[] = {&mainFunctionString, &weightFunctionString, &densityFunctionString};
+    std::string integrandFunctionString, densityFunctionString;
+    std::string *functionStrings[] = {&integrandFunctionString, &densityFunctionString};
 
-    mainFunctionString = "x";
-    weightFunctionString = "exp(-x)";
-    densityFunctionString = "0.5*exp(-x/2)";
+    integrandFunctionString = "exp(-x^2)"; // x*exp(-x^2)
+    densityFunctionString = "exp(-x)*exp(1)/(exp(1)-1)"; // 2*exp(-x^2)/sqrt(3.14159)
 
-    lowerRange = 0.0;
-    higherRange = 10000.0;
-    analyticalSolution = 1.0;
-    numberOfSamples = 1.0e5;
+    // analytical solution for
+    analyticalSolution = 0.74689;
+    delta = 1;
 
     obtainIntegralValue(parameters, functionStrings);
 
