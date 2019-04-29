@@ -8,35 +8,20 @@
 namespace plt = matplotlibcpp;
 
 
-void obtainIntegralValue(double * parameters [], std::string * functionStrings []){
+void obtainIntegralValue(double long * analyticalSolution, float * ranges[], std::string * functionStrings []){
 
-    // Default sample value 1M
-    NumericalMethods calculations = NumericalMethods(parameters, functionStrings);
+    // Default sample = 1M, delta = 1.0
+    NumericalMethods calculations = NumericalMethods(analyticalSolution, ranges, functionStrings);
 
     printIntegralInformation(functionStrings, &calculations);
 
-
-    /*
-     * the problem is, why is the error so slowly converging to an answer
-     *
-     * the MC methods should maybe in practice go faster towards an solution.
-     *
-     *
-     * try to compare with other functions as in the book, if the converging times are similar
-     *
-     * as on page 428 (440 in preview)
-     *
-     */
-
-
-
     calculateIntegrals(&calculations);
 
-//    analyzeErrors(&calculations);
+    analyzeErrors(&calculations);
 
-//    analyzeCPUTimes(&calculations);
+    analyzeCPUTimes(&calculations);
 
-//    analyzeCorrelationTime(&calculations);
+    analyzeCorrelationTime(&calculations);
 
 }
 
@@ -44,10 +29,11 @@ void calculateIntegrals(NumericalMethods * calculations){
 
     std::cout << "Start usual integral calculation." << std::endl << std::endl;
 
-    calculations->setSamples(4e5);
+    calculations->setSamples(1e6);
+    calculations->delta = 2.0;
 
-//    calculations->simpson();
-//    calculations->simpleMonteCarlo();
+    calculations->simpson();
+    calculations->simpleMonteCarlo();
     calculations->metropolis();
 
     std::cout << std::endl << "Done performing integral calculation." << std::endl << std::endl << std::endl;;
@@ -59,13 +45,12 @@ void calculateIntegrals(NumericalMethods * calculations){
 void analyzeErrors(NumericalMethods * calculations) {
 
     // the limit of increasing the number of samples, 10^{tenfold}
-    int tenfold = 3;
+    int tenfold = 6;
 
     // Perform the RMS calculations per 10^N
-    int numberOfIterationsPerSampleNumber = 50;
+    int numberOfIterationsPerSampleNumber = 100;
 
-    // Cha
-    calculations->delta = 1.0;
+    calculations->delta = 2.0;
 
     double squared_deviation_error_metropolis, standard_error_average_metropolis;
     double squared_deviation_error_simple_monte_carlo, standard_error_average_simple_monte_carlo;
@@ -81,7 +66,9 @@ void analyzeErrors(NumericalMethods * calculations) {
     calculations->printMessage = false;
 
     std::cout << "Start error calculation." << std::endl << std::endl;
+
     std::cout << "Maximum walking step, aka delta: " << calculations->delta << std::endl;
+    std::cout << "Samples: " << calculations->getSamples() << std::endl;
     std::cout << "Number of iterations per 10^N: " << numberOfIterationsPerSampleNumber << std::endl << std::endl;
 
     for (int j = 0; j <= tenfold-1; j++) {
@@ -100,8 +87,10 @@ void analyzeErrors(NumericalMethods * calculations) {
 
             if (calculations->integralResult != 0.0) {
 
-                squared_deviation_error_metropolis += std::pow((calculations->integralResult - calculations->analyticalSolution), 2);
-                standard_error_average_metropolis += calculations->standardError / numberOfIterationsPerSampleNumber;
+                squared_deviation_error_metropolis +=
+                        std::pow((calculations->integralResult - calculations->analyticalSolution), 2);
+                standard_error_average_metropolis +=
+                        calculations->standardError / numberOfIterationsPerSampleNumber;
             }
             else
                 rejectedResultsMetropolis++;
@@ -109,8 +98,10 @@ void analyzeErrors(NumericalMethods * calculations) {
             calculations->simpleMonteCarlo();
 
             if (calculations->integralResult != 0.0) {
-                squared_deviation_error_simple_monte_carlo += std::pow((calculations->integralResult - calculations->analyticalSolution), 2);
-                standard_error_average_simple_monte_carlo += calculations->standardError / numberOfIterationsPerSampleNumber;
+                squared_deviation_error_simple_monte_carlo +=
+                        std::pow((calculations->integralResult - calculations->analyticalSolution), 2);
+                standard_error_average_simple_monte_carlo +=
+                        calculations->standardError / numberOfIterationsPerSampleNumber;
 
             }
             else
@@ -120,14 +111,18 @@ void analyzeErrors(NumericalMethods * calculations) {
 
         x_ranges[j] = calculations->getSamples();
 
-        errors[0][j] = std::sqrt(squared_deviation_error_metropolis / (numberOfIterationsPerSampleNumber - rejectedResultsMetropolis));
-        errors[1][j] = std::sqrt(squared_deviation_error_simple_monte_carlo / (numberOfIterationsPerSampleNumber - rejectedResultsMonteCarlo));
+        errors[0][j] = std::sqrt(squared_deviation_error_metropolis /
+                (numberOfIterationsPerSampleNumber - rejectedResultsMetropolis));
+        errors[1][j] = std::sqrt(squared_deviation_error_simple_monte_carlo /
+                (numberOfIterationsPerSampleNumber - rejectedResultsMonteCarlo));
         errors[2][j] = standard_error_average_metropolis;
         errors[3][j] = standard_error_average_simple_monte_carlo;
 
-        std::cout << "samples: " << calculations->getSamples() << std::endl;
-        std::cout << "Rejected Metropolis: " << rejectedResultsMetropolis << "/" << numberOfIterationsPerSampleNumber << std::endl;
-        std::cout << "Rejected Monte Carlo: " << rejectedResultsMonteCarlo << "/" << numberOfIterationsPerSampleNumber << std::endl;
+        std::cout << "Samples: " << calculations->getSamples() << std::endl;
+        std::cout << "Rejected Metropolis: " << rejectedResultsMetropolis << "/";
+        std::cout << numberOfIterationsPerSampleNumber << std::endl;
+        std::cout << "Rejected Monte Carlo: " << rejectedResultsMonteCarlo << "/";
+        std::cout << numberOfIterationsPerSampleNumber << std::endl;
         std::cout << "RMS error Metropolis: " << errors[0][j] << std::endl;
         std::cout << "RMS error Simple Monte Carlo: " << errors[1][j] << std::endl;
         std::cout << "Average standard error Metropolis: " << errors[2][j] << std::endl;
@@ -146,8 +141,9 @@ void analyzeCPUTimes(NumericalMethods * calculations){
 
     std::cout << "Start CPU time analysis." << std::endl << std::endl;
 
-    calculations->setSamples(1.0e6);
-    calculations->errorLevel = 1.0e-2;
+    calculations->setSamples(1e6);
+    calculations->errorLevel =1.0e-3;
+    calculations->delta = 1;
 
 
     calculations->CPUTimeAnalysis = true;
@@ -155,19 +151,19 @@ void analyzeCPUTimes(NumericalMethods * calculations){
 
     calculations->simpson();
 
-    std::cout << "Simpson's method: " << calculations->timePassed << " ms" << std::endl;
+    std::cout << "Simpson's method: " << calculations->integralTime << " ms" << std::endl;
     std::cout << "Number of samples: " << calculations->sampleLevel << std::endl;
     std::cout << "Error level: " << calculations->errorLevel << std::endl << std::endl;
 
     calculations->simpleMonteCarlo();
 
-    std::cout << "Simple Monte Carlo method: " << calculations->timePassed << " ms" << std::endl;
+    std::cout << "Simple Monte Carlo method: " << calculations->integralTime << " ms" << std::endl;
     std::cout << "Number of samples: " << calculations->sampleLevel << std::endl;
     std::cout << "Error level: " << calculations->errorLevel << std::endl << std::endl;
 
     calculations->metropolis();
 
-    std::cout << std::endl << "Metropolis method: " << calculations->timePassed << " ms" << std::endl;
+    std::cout << std::endl << "Metropolis method: " << calculations->integralTime << " ms" << std::endl;
     std::cout << "Number of samples: " << calculations->sampleLevel << std::endl;
     std::cout << "Error level: " << calculations->errorLevel << std::endl << std::endl;
 
@@ -180,7 +176,7 @@ void analyzeCorrelationTime(NumericalMethods * calculations){
 
     std::cout << "Start correlation time analysis." << std::endl << std::endl;
 
-    calculations->setSamples((int)1e3);
+    calculations->setSamples((int)1e5);
     for (int i = 0; i < 3; i++){
 
         calculations->delta = 5*std::pow(10,i-1);
@@ -188,7 +184,7 @@ void analyzeCorrelationTime(NumericalMethods * calculations){
 
     }
 
-    calculations->setSamples((int)1e4);
+    calculations->setSamples((int)1e6);
     for (int i = 0; i < 3; i++){
 
         calculations->delta = 5*std::pow(10,i-1);
@@ -200,10 +196,12 @@ void analyzeCorrelationTime(NumericalMethods * calculations){
 }
 
 // uses MATPLOTLIB to show the results.
-void exportErrorPlot(std::vector<double> * x_ranges, std::vector<std::vector <double>> * errors, int numberOfIterationsPerSampleNumber, float delta){
+void exportErrorPlot(std::vector<double> * x_ranges, std::vector<std::vector <double>> * errors,
+        int numberOfIterationsPerSampleNumber, float delta){
 
 
-    std::string exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/RMS_ASE_METROPOLIS_MC_FRAC_INTEGRAL.pdf";
+    std::string exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/"
+                                    "RMS_ASE_METROPOLIS_MC_FRAC_INTEGRAL.pdf";
 
     // this decreases the precision of digits for variable delta
     std::ostringstream out;
@@ -229,14 +227,17 @@ void exportErrorPlot(std::vector<double> * x_ranges, std::vector<std::vector <do
 
     plt::save(exportDestination);
 
+    plt::close();
+
 }
 
 
 void printIntegralInformation(std::string * functionStrings [], NumericalMethods * calculations){
 
     std::cout << std::endl << "Integral: int(" << *functionStrings[0] <<",";
-    std::cout << calculations->lowerLimit << "," << calculations->higherLimit << ",x)" << std::endl;
-    std::cout << "Density function: " << *functionStrings[1] << std::endl << "Analytical solution: " << calculations->analyticalSolution;
+    std::cout << calculations->getLowerLimit() << "," << calculations->getHigherLimit() << ",x)" << std::endl;
+    std::cout << "Density function: " << *functionStrings[1] << std::endl;
+    std::cout << "Analytical solution: " << calculations->analyticalSolution;
 
     std::cout << std::endl << std::endl << std::endl;
 

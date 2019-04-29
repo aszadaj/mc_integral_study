@@ -2,20 +2,22 @@
 
 int main() {
 
-    double  analyticalSolution, delta;
-    double  *parameters[] = {&analyticalSolution, &delta};
+    double long analyticalSolution;
 
-    std::string integrandFunctionString, densityFunctionString;
-    std::string *functionStrings[] = {&integrandFunctionString, &densityFunctionString};
+    float lowerRange, higherRange;
+    float *ranges[] = {&lowerRange, &higherRange};
 
-    integrandFunctionString = "exp(-x^2)"; // x*exp(-x^2)
-    densityFunctionString = "exp(-x)*exp(1)/(exp(1)-1)"; // 2*exp(-x^2)/sqrt(3.14159)
+    std::string integrandFunctionString, PDFFunctionString;
+    std::string *functionStrings[] = {&integrandFunctionString, &PDFFunctionString};
 
-    // analytical solution for
-    analyticalSolution = 0.74689;
-    delta = 1;
+    // the functions are such that the PDF have to be normalized in order to calculate the integrals
+    integrandFunctionString = "x*exp(-x^2)";
+    PDFFunctionString = "2*exp(-x^2)/sqrt(3.1415926536)"; //"2*exp(-x^2)/sqrt(3.1415926536)"
+    lowerRange = 0.0;
+    higherRange = 10000.0;
+    analyticalSolution = 0.5;
 
-    obtainIntegralValue(parameters, functionStrings);
+    obtainIntegralValue(&analyticalSolution, ranges, functionStrings);
 
     return 0;
 

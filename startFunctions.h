@@ -8,7 +8,7 @@
 #include "NumericalMethods.cpp"
 #include "matplotlibcpp.h"
 
-void obtainIntegralValue(double * [], std::string * []);
+void obtainIntegralValue(double long *, std::string * []);
 
 void calculateIntegrals(NumericalMethods *);
 

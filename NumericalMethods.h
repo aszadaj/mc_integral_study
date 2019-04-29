@@ -8,41 +8,32 @@
 #include <iostream>
 #include "fparser4/fparser.hh"
 #include <random>
+#include "matplotlibcpp.h"
 
 
 class NumericalMethods {
 
-    double stepSize;
+    double lowerLimit, higherLimit, stepSize;
+
+    unsigned int samples;
 
     FunctionParser integrandFunction;
-    FunctionParser densityFunction;
-    unsigned int samples;
+    FunctionParser PDFFunction;
 
 public:
 
-
-
-    double lowerLimit;
-    double higherLimit;
-    unsigned int sampleLevel;
-    double analyticalSolution;
-    double integralResult;
-
-
-
-    double standardError;
-    double errorFromRealResult;
-    double correlationTime;
-    double timePassed;
-    double errorLevel;
+    double long analyticalSolution;
+    double integralResult, standardError, errorFromRealResult, correlationTime, integralTime, errorLevel, randomWalkTime;
+    unsigned int sampleLevel, rejectedSamples;
     float delta;
 
-    double randomWalkTime;
+    // maybe delete randomWalkTime
 
-    bool printMessage;
-    bool CPUTimeAnalysis;
 
-    NumericalMethods(double * [], std::string * []);
+    bool printMessage, CPUTimeAnalysis;
+
+
+    NumericalMethods(const double long *, float * [], std::string * []);
 
     void simpson();
     void simpleMonteCarlo();
@@ -52,15 +43,21 @@ public:
     void stopClock();
     void printResults(std::string);
 
-    double getArgMax();
-    void getStandardError(double [], bool = true);
-    double getAutocorrelationValue(double [], int);
-    void createRandomWalk(double []);
     unsigned int determineCorrelatedStep(double []);
-    unsigned int getSamples() const;
-    void setSamples(unsigned int samples);
 
     void resetValues();
+
+    void setSamples(unsigned int samples);
+    void setLowerLimit(double lowerLimit);
+    void setHigherLimit(double higherLimit);
+
+    double getLowerLimit() const;
+    double getHigherLimit() const;
+    double getArgMax();
+    void getStandardError(double []);
+    double getAutocorrelationValue(double [], int);
+    unsigned int getSamples() const;
+
 
 };
 
