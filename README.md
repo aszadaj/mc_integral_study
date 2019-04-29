@@ -3,11 +3,14 @@
 Project in the course SI2530 Computational Physics (KTH Royal Institute of Technology)
 
 
-The code is built to analyze the methods described in the ```project_formulation.pdf```.
+The code is built to analyze two integrals using Simpson's method, Simple Monte Carlo and a Metropolis algorithm.
+Investigation such as error level, correlation time (for Metropolis method), RMS and standard errors and general 
+comparisons of those methods. 
 
 # How to run
 
-The code is adapted to run with C++11 and the compilation can either be done with GNU compiler or other. On macOS console (terminal) the compilation is done bu
+The code is adapted to run with C++11 with ```matplotlibcpp``` library which have ```numpy``` as a dependency. The code
+can be compiled with the input in terminal on macOS by
 
     gcc++ main.cpp
  
@@ -22,5 +25,5 @@ The code is adapted to run with C++11 and the compilation can either be done wit
 
 # Output
 
-The output gives various information about the integrated methods, which are Rectangular, Trapezoidal, Simpson's, Monte
-Carlo mean sample method and Monte Carlo hit or miss method.
+The output is in form of console log or a plot using ```matplotlibcpp```, which are used as a reference in the report
+(to be appeared).
