@@ -437,22 +437,10 @@ NumericalMethods.h
 /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/NumericalMethods.h
 iostream
 -
-fparser4/fparser.hh
-/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.hh
 random
 -
 matplotlibcpp.h
 /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/matplotlibcpp.h
-
-/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.hh
-string
--
-vector
--
-iostream
--
-complex
--
 
 /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/main.cpp
 startFunctions.cpp
@@ -486,6 +474,8 @@ numpy/arrayobject.h
 startFunctions.h
 /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/startFunctions.h
 string
+-
+sstream
 -
 
 /Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/startFunctions.h

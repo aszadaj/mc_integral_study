@@ -6,7 +6,6 @@
 #define REPORT_CODE_NUMERICALMETHODS_H
 
 #include <iostream>
-#include "fparser4/fparser.hh"
 #include <random>
 #include "matplotlibcpp.h"
 
@@ -17,23 +16,16 @@ class NumericalMethods {
 
     unsigned int samples;
 
-    FunctionParser integrandFunction;
-    FunctionParser PDFFunction;
-
 public:
 
     double long analyticalSolution;
-    double integralResult, standardError, errorFromRealResult, correlationTime, integralTime, errorLevel, randomWalkTime;
+    double integralResult, standardError, errorFromRealResult, correlationTime, integralTime, errorLevel;
     unsigned int sampleLevel, rejectedSamples;
     float delta;
 
-    // maybe delete randomWalkTime
+    bool printMessage, CPUTimeAnalysis, simpleIntegral;
 
-
-    bool printMessage, CPUTimeAnalysis;
-
-
-    NumericalMethods(const double long *, float * [], std::string * []);
+    explicit NumericalMethods(const double long *, bool = true);
 
     void simpson();
     void simpleMonteCarlo();
@@ -48,16 +40,19 @@ public:
     void resetValues();
 
     void setSamples(unsigned int samples);
-    void setLowerLimit(double lowerLimit);
-    void setHigherLimit(double higherLimit);
+
+    double getMainFunction(double *);
+    double getPDF(double *);
+    double getSampledPDFValue(double *, double *, double *);
 
     double getLowerLimit() const;
     double getHigherLimit() const;
-    double getArgMax();
+    double getRandomWalkStartValue();
     void getStandardError(double []);
     double getAutocorrelationValue(double [], int);
     unsigned int getSamples() const;
 
+    void exportRandomizedSamples(double [], std::string);
 
 };
 

@@ -123,33 +123,6 @@ mc_integral_study/fast:
 	$(MAKE) -f CMakeFiles/mc_integral_study.dir/build.make CMakeFiles/mc_integral_study.dir/build
 .PHONY : mc_integral_study/fast
 
-fparser4/fparser.o: fparser4/fparser.cc.o
-
-.PHONY : fparser4/fparser.o
-
-# target to build an object file
-fparser4/fparser.cc.o:
-	$(MAKE) -f CMakeFiles/mc_integral_study.dir/build.make CMakeFiles/mc_integral_study.dir/fparser4/fparser.cc.o
-.PHONY : fparser4/fparser.cc.o
-
-fparser4/fparser.i: fparser4/fparser.cc.i
-
-.PHONY : fparser4/fparser.i
-
-# target to preprocess a source file
-fparser4/fparser.cc.i:
-	$(MAKE) -f CMakeFiles/mc_integral_study.dir/build.make CMakeFiles/mc_integral_study.dir/fparser4/fparser.cc.i
-.PHONY : fparser4/fparser.cc.i
-
-fparser4/fparser.s: fparser4/fparser.cc.s
-
-.PHONY : fparser4/fparser.s
-
-# target to generate assembly for a file
-fparser4/fparser.cc.s:
-	$(MAKE) -f CMakeFiles/mc_integral_study.dir/build.make CMakeFiles/mc_integral_study.dir/fparser4/fparser.cc.s
-.PHONY : fparser4/fparser.cc.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -186,9 +159,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... mc_integral_study"
-	@echo "... fparser4/fparser.o"
-	@echo "... fparser4/fparser.i"
-	@echo "... fparser4/fparser.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

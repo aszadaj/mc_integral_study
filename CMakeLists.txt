@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 # This line is to find the NumPy version installed through pip
 set(PYTHON_INCLUDE_DIR ${PYTHON_INCLUDE_DIR};/Library/Python/2.7/site-packages/numpy/core/include)
 
-add_executable(mc_integral_study main.cpp fparser4/fparser.cc)
+add_executable(mc_integral_study main.cpp)
 
 target_include_directories(mc_integral_study PRIVATE ${PYTHON_INCLUDE_DIR})
 target_link_libraries(mc_integral_study ${PYTHON_LIBRARY})

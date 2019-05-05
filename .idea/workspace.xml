@@ -13,11 +13,39 @@
   <component name="ChangeListManager">
     <list default="true" id="83387ee9-cc00-4cbe-91d7-c9ead5ea9dcb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NumericalMethods.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/NumericalMethods.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NumericalMethods.h" beforeDir="false" afterPath="$PROJECT_DIR$/NumericalMethods.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/mc_integral_study.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/mc_integral_study" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/mc_integral_study" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/mc_integral_study.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/mc_integral_study.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/docs/fparser.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/docs/gpl.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/docs/lgpl.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/docs/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/examples/example.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/examples/example2.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/extrasrc/fp_identifier_parser.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/extrasrc/fp_opcode_add.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/extrasrc/fpaux.hh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/extrasrc/fptypes.hh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/fparser.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/fparser.hh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/fparser_gmpint.hh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/fparser_mpfr.hh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/fpconfig.hh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/fpoptimizer.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/mpfr/GmpInt.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/mpfr/GmpInt.hh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/mpfr/MpfrFloat.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fparser4/mpfr/MpfrFloat.hh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/startFunctions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/startFunctions.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/startFunctions.h" beforeDir="false" afterPath="$PROJECT_DIR$/startFunctions.h" afterDir="false" />
@@ -38,17 +66,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/startFunctions.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+            <state relative-caret-position="348">
+              <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
               <folding>
                 <element signature="e#49#76#0" expanded="true" />
               </folding>
@@ -59,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/startFunctions.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+            <state relative-caret-position="270">
+              <caret line="18" column="98" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
               <folding>
                 <element signature="e#124#155#0" expanded="true" />
               </folding>
@@ -68,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NumericalMethods.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2405">
-              <caret line="250" column="1" selection-start-line="250" selection-start-column="1" selection-end-line="250" selection-end-column="1" />
+            <state relative-caret-position="1957">
+              <caret line="226" lean-forward="true" selection-start-line="226" selection-end-line="226" />
             </state>
           </provider>
         </entry>
@@ -80,8 +108,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NumericalMethods.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
+            <state relative-caret-position="675">
+              <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
               <folding>
                 <element signature="e#128#147#0" expanded="true" />
               </folding>
@@ -93,36 +121,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>standardError</find>
-      <find>CPUTimeAnalysis</find>
-      <find>hist</find>
-      <find>higherLimit</find>
-      <find>getAutocorrelationValue</find>
-      <find>setHigherLimit</find>
-      <find>startClock</find>
-      <find>setSamples</find>
-      <find>stepSize</find>
-      <find>analyticalSolution</find>
-      <find>exportRandomWalkDistribution</find>
-      <find>close</find>
-      <find>analyzeCPUTimes</find>
-      <find>exportErrorPlot</find>
-      <find>analyzeErrors</find>
-      <find>randomWalkTime</find>
-      <find>metropolis</find>
-      <find>metropolis2</find>
-      <find>startTime</find>
-      <find>tenfold</find>
-      <find>rejectedSamples</find>
-      <find>createRandomWalk</find>
-      <find>figure</find>
-      <find>subplot</find>
       <find>determineCorrelatedStep</find>
-      <find>getArgMax</find>
       <find>resetValues</find>
       <find>exportDistribution</find>
       <find>calculateIntegrals</find>
+      <find>randomWalkTime</find>
+      <find>errorFromRealResult</find>
+      <find>setLowerLimit</find>
+      <find>sinusFunction</find>
+      <find>integrandFunction</find>
+      <find>PDFExpFunction</find>
+      <find>printIntegralInformation</find>
+      <find>n</find>
+      <find>plt</find>
+      <find>getHigherLimit</find>
+      <find>this</find>
+      <find>sampledUniformXValue</find>
+      <find>waveNumberN</find>
+      <find>getArgMax</find>
+      <find>higherLimit</find>
+      <find>getMainFunction</find>
+      <find>metropolis</find>
+      <find>getPDF</find>
+      <find>sampledOnRangeXValue</find>
+      <find>exportRandomizedSamples</find>
+      <find>exportErrorPlot</find>
+      <find>getSampledPDFValue</find>
+      <find>getRandomWalkStartValue</find>
+      <find>analyzeCPUTimes</find>
       <find>getStandardError</find>
+      <find>analyzeErrors</find>
     </findStrings>
     <replaceStrings>
       <replace>sum &lt;&lt;  &quot;, Relative error: &quot; &lt;&lt; std::abs(sum - analyticalSolution)*100.0/sum &lt;&lt;  std::endl;</replace>
@@ -141,10 +169,10 @@
         <option value="$PROJECT_DIR$/numerical_functions.h" />
         <option value="$PROJECT_DIR$/numerical_functions.cpp" />
         <option value="$PROJECT_DIR$/fparser4/README.md" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/startFunctions.h" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/NumericalMethods.h" />
+        <option value="$PROJECT_DIR$/startFunctions.h" />
         <option value="$PROJECT_DIR$/NumericalMethods.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/startFunctions.cpp" />
@@ -152,10 +180,11 @@
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="859" />
-    <option name="width" value="1701" />
-    <option name="height" value="1080" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1280" />
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -163,7 +192,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,6 +203,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -255,12 +284,19 @@
       <workItem from="1556363990133" duration="3821000" />
       <workItem from="1556437582964" duration="27000" />
       <workItem from="1556437691021" duration="16482000" />
-      <workItem from="1556520705411" duration="17552000" />
+      <workItem from="1556520705411" duration="18631000" />
+      <workItem from="1556612403334" duration="1749000" />
+      <workItem from="1556637129806" duration="270000" />
+      <workItem from="1556666766941" duration="515000" />
+      <workItem from="1556667777172" duration="607000" />
+      <workItem from="1556710487215" duration="1006000" />
+      <workItem from="1556877180370" duration="7765000" />
+      <workItem from="1556954772330" duration="29785000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256206000" />
+    <option name="totallyTimeSpent" value="298982000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -272,10 +308,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="859" y="0" width="1701" height="1080" extended-state="6" />
+    <frame x="1280" y="23" width="1280" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1528777" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.15201466" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -293,8 +329,8 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info active="true" anchor="right" id="Run" order="4" sideWeight="0.85645" side_tool="true" visible="true" weight="0.41681364" />
-      <window_info anchor="right" id="Messages" order="5" sideWeight="0.14354995" visible="true" weight="0.41681364" />
+      <window_info active="true" anchor="right" id="Run" order="4" sideWeight="0.7079108" side_tool="true" visible="true" weight="0.33203125" />
+      <window_info anchor="right" id="Messages" order="5" sideWeight="0.29208925" visible="true" weight="0.33203125" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,13 +403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="75" lean-forward="true" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fparser4/examples/example.cc">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -403,16 +432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="15">
-            <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/matplotlibcpp.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
@@ -423,47 +442,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NumericalMethods.h">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="285">
+            <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#128#147#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/iosfwd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/startFunctions.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        <state relative-caret-position="270">
+          <caret line="18" column="98" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
           <folding>
             <element signature="e#124#155#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NumericalMethods.cpp">
+    <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2405">
-          <caret line="250" column="1" selection-start-line="250" selection-start-column="1" selection-end-line="250" selection-end-column="1" />
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/NumericalMethods.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="675">
+          <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
+          <folding>
+            <element signature="e#128#147#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/startFunctions.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+        <state relative-caret-position="348">
+          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
           <folding>
             <element signature="e#49#76#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NumericalMethods.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1957">
+          <caret line="226" lean-forward="true" selection-start-line="226" selection-end-line="226" />
         </state>
       </provider>
     </entry>

@@ -8,7 +8,7 @@
 #include "NumericalMethods.cpp"
 #include "matplotlibcpp.h"
 
-void obtainIntegralValue(double long *, std::string * []);
+void obtainIntegralValue(double long *, bool = true);
 
 void calculateIntegrals(NumericalMethods *);
 
@@ -16,7 +16,7 @@ void analyzeErrors(NumericalMethods *);
 void analyzeCorrelationTime(NumericalMethods *);
 void analyzeCPUTimes(NumericalMethods *);
 
-void exportErrorPlot (std::vector<double> *, std::vector<std::vector <double>> *, int, float);
-void printIntegralInformation(std::string * [], NumericalMethods *);
+void exportErrorPlot (std::vector<double> *, std::vector<std::vector <double>> *, int, float, bool);
+void printIntegralInformation(NumericalMethods *, bool);
 
 #endif //REPORT_CODE_STARTFUNCTIONS_H

@@ -84,12 +84,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.cc">
-			<Option target="mc_integral_study"/>
-		</Unit>
-		<Unit filename="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/fparser4/fparser.hh">
-			<Option target="mc_integral_study"/>
-		</Unit>
 		<Unit filename="/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/mc_integral_study/main.cpp">
 			<Option target="mc_integral_study"/>
 		</Unit>

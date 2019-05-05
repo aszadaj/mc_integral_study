@@ -4,24 +4,25 @@
 
 #include "startFunctions.h"
 #include <string>
+#include <sstream>
 
 namespace plt = matplotlibcpp;
 
 
-void obtainIntegralValue(double long * analyticalSolution, float * ranges[], std::string * functionStrings []){
+void obtainIntegralValue(double long * analyticalSolution, bool simpleIntegral){
 
     // Default sample = 1M, delta = 1.0
-    NumericalMethods calculations = NumericalMethods(analyticalSolution, ranges, functionStrings);
+    NumericalMethods calculations = NumericalMethods(analyticalSolution, simpleIntegral);
 
-    printIntegralInformation(functionStrings, &calculations);
+    printIntegralInformation(&calculations, simpleIntegral);
 
-    calculateIntegrals(&calculations);
-
+//    calculateIntegrals(&calculations);
+//
     analyzeErrors(&calculations);
-
-    analyzeCPUTimes(&calculations);
-
-    analyzeCorrelationTime(&calculations);
+//
+//    analyzeCPUTimes(&calculations);
+//
+//    analyzeCorrelationTime(&calculations);
 
 }
 
@@ -29,8 +30,9 @@ void calculateIntegrals(NumericalMethods * calculations){
 
     std::cout << "Start usual integral calculation." << std::endl << std::endl;
 
-    calculations->setSamples(1e6);
-    calculations->delta = 2.0;
+    calculations->setSamples(1e4);
+
+    calculations->delta = 2;
 
     calculations->simpson();
     calculations->simpleMonteCarlo();
@@ -130,7 +132,8 @@ void analyzeErrors(NumericalMethods * calculations) {
 
     }
 
-    exportErrorPlot(&x_ranges, &errors, numberOfIterationsPerSampleNumber, calculations->delta);
+    exportErrorPlot(&x_ranges, &errors, numberOfIterationsPerSampleNumber,
+            calculations->delta, calculations->simpleIntegral);
 
     std::cout << std::endl << "Done performing error analysis." << std::endl << std::endl << std::endl;
 
@@ -141,9 +144,13 @@ void analyzeCPUTimes(NumericalMethods * calculations){
 
     std::cout << "Start CPU time analysis." << std::endl << std::endl;
 
-    calculations->setSamples(1e6);
-    calculations->errorLevel =1.0e-3;
-    calculations->delta = 1;
+    calculations->setSamples(1e5);
+    calculations->delta = 2;
+
+    if (calculations->simpleIntegral)
+        calculations->errorLevel =1.0e-3;
+    else
+        calculations->errorLevel =1.0e-2;
 
 
     calculations->CPUTimeAnalysis = true;
@@ -197,11 +204,16 @@ void analyzeCorrelationTime(NumericalMethods * calculations){
 
 // uses MATPLOTLIB to show the results.
 void exportErrorPlot(std::vector<double> * x_ranges, std::vector<std::vector <double>> * errors,
-        int numberOfIterationsPerSampleNumber, float delta){
+        int numberOfIterationsPerSampleNumber, float delta, bool simpleIntegral){
 
+    std::string exportDestination;
 
-    std::string exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/"
+    if (simpleIntegral)
+        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/"
                                     "RMS_ASE_METROPOLIS_MC_FRAC_INTEGRAL.pdf";
+    else
+        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/"
+                            "RMS_ASE_METROPOLIS_MC_OSC_INTEGRAL.pdf";
 
     // this decreases the precision of digits for variable delta
     std::ostringstream out;
@@ -223,7 +235,7 @@ void exportErrorPlot(std::vector<double> * x_ranges, std::vector<std::vector <do
     plt::legend();
 
     plt::xlabel("Number of Samples [N]");
-    plt::ylabel("Error (RMS or ASE)");
+    plt::ylabel("Error (RMS or Average Standard Error)");
 
     plt::save(exportDestination);
 
@@ -232,12 +244,25 @@ void exportErrorPlot(std::vector<double> * x_ranges, std::vector<std::vector <do
 }
 
 
-void printIntegralInformation(std::string * functionStrings [], NumericalMethods * calculations){
+void printIntegralInformation(NumericalMethods * calculations, bool simpleIntegral){
 
-    std::cout << std::endl << "Integral: int(" << *functionStrings[0] <<",";
-    std::cout << calculations->getLowerLimit() << "," << calculations->getHigherLimit() << ",x)" << std::endl;
-    std::cout << "Density function: " << *functionStrings[1] << std::endl;
-    std::cout << "Analytical solution: " << calculations->analyticalSolution;
+
+    if (simpleIntegral){
+
+        std::cout << std::endl << "Integral: int(x*exp(-x^2),";
+        std::cout << calculations->getLowerLimit() << "," << calculations->getHigherLimit() << ",x)" << std::endl;
+        std::cout << "Density function: 2*exp(-x^2)/sqrt(pi)"  << std::endl;
+        std::cout << "Analytical solution: " << calculations->analyticalSolution;
+    }
+    else{
+
+        std::cout << std::endl << "Integral: int(sin(1/x)^2,";
+        std::cout << calculations->getLowerLimit() << "," << calculations->getHigherLimit() << ",x)" << std::endl;
+        std::cout << "Density function: multiple"<< std::endl;
+        std::cout << "Analytical solution: " << calculations->analyticalSolution;
+
+    }
+
 
     std::cout << std::endl << std::endl << std::endl;
 
