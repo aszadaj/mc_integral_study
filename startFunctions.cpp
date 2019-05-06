@@ -16,13 +16,15 @@ void obtainIntegralValue(double long * analyticalSolution, bool simpleIntegral){
 
     printIntegralInformation(&calculations, simpleIntegral);
 
-//    calculateIntegrals(&calculations);
-//
+
+    calculateIntegrals(&calculations);
+
     analyzeErrors(&calculations);
-//
-//    analyzeCPUTimes(&calculations);
-//
-//    analyzeCorrelationTime(&calculations);
+
+    analyzeCPUTimes(&calculations);
+
+    analyzeCorrelationTime(&calculations);
+    
 
 }
 
@@ -30,9 +32,9 @@ void calculateIntegrals(NumericalMethods * calculations){
 
     std::cout << "Start usual integral calculation." << std::endl << std::endl;
 
-    calculations->setSamples(1e4);
+    calculations->setSamples(1e6);
 
-    calculations->delta = 2;
+    calculations->delta = 1;
 
     calculations->simpson();
     calculations->simpleMonteCarlo();
@@ -52,7 +54,7 @@ void analyzeErrors(NumericalMethods * calculations) {
     // Perform the RMS calculations per 10^N
     int numberOfIterationsPerSampleNumber = 100;
 
-    calculations->delta = 2.0;
+    calculations->delta = 10;
 
     double squared_deviation_error_metropolis, standard_error_average_metropolis;
     double squared_deviation_error_simple_monte_carlo, standard_error_average_simple_monte_carlo;
@@ -144,7 +146,7 @@ void analyzeCPUTimes(NumericalMethods * calculations){
 
     std::cout << "Start CPU time analysis." << std::endl << std::endl;
 
-    calculations->setSamples(1e5);
+    calculations->setSamples(1e6);
     calculations->delta = 2;
 
     if (calculations->simpleIntegral)

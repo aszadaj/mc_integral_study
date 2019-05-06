@@ -39,8 +39,8 @@ NumericalMethods::NumericalMethods(const double long * analyticalSolution, bool 
     errorLevel = 1.0e-4;
     rejectedSamples = 0;
 
-    lowerLimit = 0.001;
-    higherLimit = 100;
+    lowerLimit = 0.0001;
+    higherLimit = 1000;
 
     printMessage = true;
     CPUTimeAnalysis = false;
@@ -130,7 +130,7 @@ void NumericalMethods::simpleMonteCarlo(){
     getStandardError(x_i);
 
     printResults("Simple Monte Carlo");
-    //exportRandomizedSamples(x_i, "monte_carlo");
+//    exportRandomizedSamples(x_i, "monte_carlo");
 
     delete [] x_i;
 
@@ -189,7 +189,7 @@ void NumericalMethods::metropolis() {
     correlationTime = integralTime * (float) determineCorrelatedStep(x_i)/samples * 1000;
 
     printResults("Metropolis");
-    //exportRandomizedSamples(x_i, "metropolis");
+//    exportRandomizedSamples(x_i, "metropolis");
 
     delete [] x_i;
 
@@ -303,10 +303,10 @@ double NumericalMethods::getPDF(double * x){
     else{
 
         if (*x >= 2/M_PI)
-            functionValue = normalizationConstant*std::exp(2/M_PI - *x);
+            functionValue = normalizationConstant * std::exp(2/M_PI - *x);
 
         else if (*x < 2/M_PI && *x > 1/M_PI)
-            functionValue = normalizationConstant*(*x - 1/M_PI);
+            functionValue = normalizationConstant * (*x - 1/M_PI);
 
         else{
 
@@ -323,7 +323,7 @@ double NumericalMethods::getPDF(double * x){
 double NumericalMethods::getSampledPDFValue(double * nonUniformDistribution, double * randomizedRValue,
         double * randomizedNValue ){
 
-    double waveNumberN, sampledOnRangeXValue, oscillatoryPartValue;
+    double waveNumberN, sampledOnRangeXValue;
     double exponentialLimit = 2*std::pow(M_PI,2)/(4+M_PI+2*std::pow(M_PI,2));
     double linearLimit = exponentialLimit + M_PI/(4+M_PI+2*std::pow(M_PI,2));
 
@@ -333,7 +333,7 @@ double NumericalMethods::getSampledPDFValue(double * nonUniformDistribution, dou
     }
 
 
-    else if(*nonUniformDistribution < linearLimit && *nonUniformDistribution > exponentialLimit){
+    else if(*nonUniformDistribution < linearLimit){
         sampledOnRangeXValue = 1/M_PI + std::sqrt(*randomizedRValue);
     }
 
@@ -363,11 +363,7 @@ void NumericalMethods::exportRandomizedSamples(double x_i[], std::string functio
         x[i] = x_i[i];
 
     plt::hist(x, 900);
-    //plt::xlim(0, 5);
-
-    // plot the figure with defined attributes
-    //plt::figure_size(1200, 780);
-
+    plt::title(std::to_string(integralResult));
     plt::save(exportDestination);
 
     plt::close();
