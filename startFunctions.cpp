@@ -17,14 +17,14 @@ void obtainIntegralValue(double long * analyticalSolution, bool simpleIntegral){
     printIntegralInformation(&calculations, simpleIntegral);
 
 
-    calculateIntegrals(&calculations);
+//    calculateIntegrals(&calculations);
 
-    analyzeErrors(&calculations);
-
-    analyzeCPUTimes(&calculations);
-
+//    analyzeErrors(&calculations);
+//
+//    analyzeCPUTimes(&calculations);
+//
     analyzeCorrelationTime(&calculations);
-    
+
 
 }
 
@@ -32,12 +32,12 @@ void calculateIntegrals(NumericalMethods * calculations){
 
     std::cout << "Start usual integral calculation." << std::endl << std::endl;
 
-    calculations->setSamples(1e6);
+    calculations->setSamples(1e5);
 
-    calculations->delta = 1;
+    calculations->delta = 0.5;
 
-    calculations->simpson();
-    calculations->simpleMonteCarlo();
+//    calculations->simpson();
+//    calculations->simpleMonteCarlo();
     calculations->metropolis();
 
     std::cout << std::endl << "Done performing integral calculation." << std::endl << std::endl << std::endl;;
@@ -185,21 +185,9 @@ void analyzeCorrelationTime(NumericalMethods * calculations){
 
     std::cout << "Start correlation time analysis." << std::endl << std::endl;
 
-    calculations->setSamples((int)1e5);
-    for (int i = 0; i < 3; i++){
-
-        calculations->delta = 5*std::pow(10,i-1);
-        calculations->metropolis();
-
-    }
-
-    calculations->setSamples((int)1e6);
-    for (int i = 0; i < 3; i++){
-
-        calculations->delta = 5*std::pow(10,i-1);
-        calculations->metropolis();
-
-    }
+    calculations->correlationTimeAnalysis = true;
+    calculations->printMessage = false;
+    calculations->metropolis();
 
     std::cout << "Done with correlation time analysis." << std::endl << std::endl << std::endl;
 }

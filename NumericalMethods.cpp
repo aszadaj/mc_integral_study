@@ -33,17 +33,18 @@ namespace plt = matplotlibcpp;
 // Constructor
 NumericalMethods::NumericalMethods(const double long * analyticalSolution, bool simpleIntegral) {
 
-    integralResult = integralTime = standardError = errorFromRealResult = correlationTime = 0.0;
+    integralResult = integralTime = standardError = errorFromRealResult = 0.0;
     delta = 1.0;
     samples = sampleLevel = 1000000;
     errorLevel = 1.0e-4;
     rejectedSamples = 0;
 
     lowerLimit = 0.0001;
-    higherLimit = 1000;
+    higherLimit = 10000;
 
     printMessage = true;
     CPUTimeAnalysis = false;
+    correlationTimeAnalysis = false;
 
     this->simpleIntegral = simpleIntegral;
     this->analyticalSolution = *analyticalSolution;
@@ -102,7 +103,7 @@ void NumericalMethods::simpleMonteCarlo(){
 
     for (unsigned int i = 0; i < samples; i++){
 
-        // x randomized based on \rho and \theta or p(x) = 0.5*x*exp(-x^2)
+        // x randomized based on \rho and \theta or the multiple choice pdf
         if (simpleIntegral)
             x_i[i] = std::sqrt(-std::log(distribution_R(randomEngine_R))) *
                     std::cos(distribution_theta(randomEngine_theta));
@@ -119,6 +120,7 @@ void NumericalMethods::simpleMonteCarlo(){
 
         integralResult += getMainFunction(&x_i[i]) / getPDF(&x_i[i]) / samples;
 
+
         // Check if the value reaches error level
         if (CPUTimeAnalysis && (std::abs(integralResult - analyticalSolution) < errorLevel)){
             sampleLevel = i;
@@ -130,7 +132,7 @@ void NumericalMethods::simpleMonteCarlo(){
     getStandardError(x_i);
 
     printResults("Simple Monte Carlo");
-//    exportRandomizedSamples(x_i, "monte_carlo");
+    exportRandomizedSamples(x_i, "monte_carlo");
 
     delete [] x_i;
 
@@ -154,7 +156,7 @@ void NumericalMethods::metropolis() {
     std::mt19937 randomEngine(randomDevice());
     std::uniform_real_distribution<> distribution(0.0, 1.0);
 
-    // Create the random walk
+    // Create random walk
     for (unsigned int i = 0; i < samples; i++){
 
         x_trial = x_i[i] + (2.0 * distribution(randomEngine) - 1.0) * delta;
@@ -185,13 +187,48 @@ void NumericalMethods::metropolis() {
 
     getStandardError(x_i);
 
-    // the result is in us (microseconds)
-    correlationTime = integralTime * (float) determineCorrelatedStep(x_i)/samples * 1000;
+
+    if (correlationTimeAnalysis)
+        exportCorrelationTimePlot(x_i);
+
 
     printResults("Metropolis");
 //    exportRandomizedSamples(x_i, "metropolis");
 
     delete [] x_i;
+
+}
+
+
+
+
+void NumericalMethods::createRandomWalk(double x_i[]){
+
+    double x_trial, transitionProbability;
+
+    std::random_device randomDevice;
+    std::mt19937 randomEngine(randomDevice());
+    std::uniform_real_distribution<> distribution(0.0, 1.0);
+
+    x_i[0] = getRandomWalkStartValue();
+
+    for (unsigned int i = 0; i < samples; i++){
+
+        x_trial = x_i[i] + (2.0 * distribution(randomEngine) - 1.0) * delta;
+        transitionProbability = getPDF(&x_trial) / getPDF(&x_i[i]);
+
+        // Imposed criterion on p(x) = 0 for x < a and x > b.
+        if (x_trial < lowerLimit || x_trial > higherLimit)
+            transitionProbability = 0.0;
+
+        if (transitionProbability > 1.0 || transitionProbability > distribution(randomEngine))
+            x_i[i+1] = x_trial;
+
+        else
+            x_i[i+1] = x_i[i];
+
+    }
+
 
 }
 
@@ -239,26 +276,6 @@ void NumericalMethods::getStandardError(double x_i[]){
 
 
 
-unsigned int NumericalMethods::determineCorrelatedStep(double x_i[]){
-
-    double autocorrelationValue;
-    float correlationLimit = 0.0;
-    unsigned int correlatedStep = samples;
-
-    for (unsigned int j = 0; j < samples; j++) {
-
-        autocorrelationValue = getAutocorrelationValue(x_i, j);
-
-        if (autocorrelationValue < correlationLimit) {
-            correlatedStep = j;
-            break;
-        }
-    }
-
-    return correlatedStep;
-}
-
-
 double NumericalMethods::getAutocorrelationValue(double x_i [], int j){
 
     double mean_value = 0.0, mean_value_squared = 0.0, mean_value_convoluted = 0.0, autocorrelationValue;
@@ -275,6 +292,61 @@ double NumericalMethods::getAutocorrelationValue(double x_i [], int j){
             (mean_value_squared - std::pow(mean_value,2));
 
     return autocorrelationValue;
+
+}
+
+
+void NumericalMethods::exportCorrelationTimePlot(double x_i []){
+
+    std::string exportDestination;
+    std::vector<std::string> markers(3);
+    markers[0] = "b--o";
+    markers[1] = "r--o";
+    markers[2] = "g--o";
+
+    // this decreases the precision of digits for variable delta
+    std::ostringstream out;
+
+
+    int numberOfValues = 50;
+
+    std::vector<float> correlationValues (numberOfValues);
+    std::vector<float> x_values (numberOfValues);
+
+    for (int i = 0; i < 3; i++){
+
+        delta = std::pow(10,i-1);
+        createRandomWalk(x_i);
+
+        std::cout <<std::endl << "delta: " << delta << std::endl << std::endl;
+
+        for (int i = 0; i < numberOfValues; i++){
+
+            correlationValues[i] = getAutocorrelationValue(x_i, i);
+            x_values[i] = i;
+
+        }
+
+        out.precision(1);
+        out << std::fixed << delta;
+
+
+        plt::title("Autocorrelation function values for various $\\delta$");
+        plt::xlabel("Sample j");
+        plt::ylabel("C(j)");
+        plt::named_semilogy( "$\\delta$ = " + out.str(), x_values, correlationValues, markers[i]);
+        out.str("");
+
+    }
+
+    exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/"
+                        "distribution_correlationTime_"+getFunctionName()+".pdf";
+    plt::grid(true);
+    plt::legend();
+    plt::xlim(1.0, 80.0);
+
+    plt::save(exportDestination);
+    plt::close();
 
 }
 
@@ -383,7 +455,6 @@ void NumericalMethods::printResults(std::string methodName){
     std::cout << "Time: \t\t\t\t\t" << integralTime << " ms" << std::endl;
     std::cout << "Standard Error: \t\t" << standardError << ", ";
     std::cout << standardError*100 << " %" << std::endl;
-    std::cout << "Correlation time: \t\t" << correlationTime << " us" << std::endl;
     std::cout << "Rejected samples:\t\t" << (float)rejectedSamples/samples*100<< " %" << std::endl;
 
     std::cout << std::endl << std::endl;
@@ -411,7 +482,7 @@ void NumericalMethods::stopClock() {
 
 void NumericalMethods::resetValues(){
 
-    correlationTime  = integralResult = integralTime = errorFromRealResult = standardError =  0.0;
+    integralResult = integralTime = errorFromRealResult = standardError =  0.0;
     rejectedSamples = 0;
     sampleLevel = samples;
 
@@ -439,4 +510,15 @@ double NumericalMethods::getLowerLimit() const {
 
 double NumericalMethods::getHigherLimit() const {
     return higherLimit;
+}
+
+
+std::string NumericalMethods::getFunctionName(){
+
+
+    if (simpleIntegral)
+        return "simpleIntegral";
+    else
+        return "oscillatory";
+
 }

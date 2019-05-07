@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <random>
+#include <sstream>
 #include "matplotlibcpp.h"
 
 
@@ -19,11 +20,11 @@ class NumericalMethods {
 public:
 
     double long analyticalSolution;
-    double integralResult, standardError, errorFromRealResult, correlationTime, integralTime, errorLevel;
+    double integralResult, standardError, errorFromRealResult, integralTime, errorLevel;
     unsigned int sampleLevel, rejectedSamples;
     float delta;
 
-    bool printMessage, CPUTimeAnalysis, simpleIntegral;
+    bool printMessage, CPUTimeAnalysis, simpleIntegral, correlationTimeAnalysis;
 
     explicit NumericalMethods(const double long *, bool = true);
 
@@ -35,7 +36,8 @@ public:
     void stopClock();
     void printResults(std::string);
 
-    unsigned int determineCorrelatedStep(double []);
+    void exportCorrelationTimePlot(double []);
+    void createRandomWalk(double []);
 
     void resetValues();
 
@@ -51,6 +53,8 @@ public:
     void getStandardError(double []);
     double getAutocorrelationValue(double [], int);
     unsigned int getSamples() const;
+
+    std::string getFunctionName();
 
     void exportRandomizedSamples(double [], std::string);
 
