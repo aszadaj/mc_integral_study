@@ -58,7 +58,7 @@ NumericalMethods::NumericalMethods(const double long * analyticalSolution, bool 
 void NumericalMethods::simpson() {
 
     auto * x_i = new double[samples];
-    double simpsonsConstant = 1/3.0 * stepSize;
+    float simpsonsConstant = 1/3.0 * stepSize;
 
     resetValues();
     startClock();
@@ -66,7 +66,7 @@ void NumericalMethods::simpson() {
     // add the boundary values of the Simpson's method
     integralResult += (getMainFunction(&lowerLimit) + getMainFunction(&higherLimit)) * simpsonsConstant;
 
-    for (unsigned int i = 1; i < samples-1; i++){
+    for (unsigned int i = 1; i < samples; i++){
 
         x_i[i] = lowerLimit + i * stepSize;
 
@@ -138,7 +138,7 @@ void NumericalMethods::simpleMonteCarlo(){
 
 }
 
-// Generate samples using Metropolis algorithm (warning, the rejected samples are included in the integral)
+// Generate samples using Metropolis algorithm (The rejected samples are included in the integral)
 void NumericalMethods::metropolis() {
 
     double transitionProbability, x_trial;
@@ -200,16 +200,17 @@ void NumericalMethods::metropolis() {
 }
 
 
-
-
+// Given an array with size N, create a chain of x-values according to q(x)
 void NumericalMethods::createRandomWalk(double x_i[]){
 
     double x_trial, transitionProbability;
 
+    // Start randomization engine, to generate r on [0,1]
     std::random_device randomDevice;
     std::mt19937 randomEngine(randomDevice());
     std::uniform_real_distribution<> distribution(0.0, 1.0);
 
+    // Obtain maximum value to start the random walk
     x_i[0] = getRandomWalkStartValue();
 
     for (unsigned int i = 0; i < samples; i++){
@@ -217,19 +218,17 @@ void NumericalMethods::createRandomWalk(double x_i[]){
         x_trial = x_i[i] + (2.0 * distribution(randomEngine) - 1.0) * delta;
         transitionProbability = getPDF(&x_trial) / getPDF(&x_i[i]);
 
-        // Imposed criterion on p(x) = 0 for x < a and x > b.
+        // Imposed criterion on q(x) = 0 for x < a and x > b.
         if (x_trial < lowerLimit || x_trial > higherLimit)
             transitionProbability = 0.0;
 
-        if (transitionProbability > 1.0 || transitionProbability > distribution(randomEngine))
+        if (transitionProbability > 1.0 ||
+            transitionProbability > distribution(randomEngine))
             x_i[i+1] = x_trial;
 
         else
             x_i[i+1] = x_i[i];
-
     }
-
-
 }
 
 
@@ -318,7 +317,7 @@ void NumericalMethods::exportCorrelationTimePlot(double x_i []){
         delta = std::pow(10,i-1);
         createRandomWalk(x_i);
 
-        std::cout <<std::endl << "delta: " << delta << std::endl << std::endl;
+        std::cout << std::endl << "delta: " << delta << std::endl << std::endl;
 
         for (int i = 0; i < numberOfValues; i++){
 

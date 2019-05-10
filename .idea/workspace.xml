@@ -14,9 +14,7 @@
     <list default="true" id="83387ee9-cc00-4cbe-91d7-c9ead5ea9dcb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NumericalMethods.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/NumericalMethods.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NumericalMethods.h" beforeDir="false" afterPath="$PROJECT_DIR$/NumericalMethods.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/mc_integral_study" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/mc_integral_study" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/startFunctions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/startFunctions.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -44,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/startFunctions.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="226" selection-start-line="226" selection-end-line="227" selection-end-column="57" />
+            <state relative-caret-position="270">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#49#76#0" expanded="true" />
               </folding>
@@ -68,8 +66,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NumericalMethods.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4755">
-              <caret line="317" column="24" lean-forward="true" selection-start-line="317" selection-start-column="24" selection-end-line="317" selection-end-column="24" />
+            <state relative-caret-position="346">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
             </state>
           </provider>
         </entry>
@@ -107,7 +105,6 @@
       <find>exportErrorPlot</find>
       <find>getSampled</find>
       <find>getSampledPDFValue</find>
-      <find>getPDF</find>
       <find>calculateIntegrals</find>
       <find>getAutocorrelationValue</find>
       <find>vector</find>
@@ -117,6 +114,7 @@
       <find>exportRandomizedSamples</find>
       <find>analyzeCorrelationTime</find>
       <find>xlim</find>
+      <find>getPDF</find>
     </findStrings>
     <replaceStrings>
       <replace>sum &lt;&lt;  &quot;, Relative error: &quot; &lt;&lt; std::abs(sum - analyticalSolution)*100.0/sum &lt;&lt;  std::endl;</replace>
@@ -139,8 +137,8 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/startFunctions.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/startFunctions.cpp" />
         <option value="$PROJECT_DIR$/NumericalMethods.h" />
+        <option value="$PROJECT_DIR$/startFunctions.cpp" />
         <option value="$PROJECT_DIR$/NumericalMethods.cpp" />
       </list>
     </option>
@@ -260,12 +258,17 @@
       <workItem from="1557168804339" duration="181000" />
       <workItem from="1557224175461" duration="633000" />
       <workItem from="1557240701439" duration="443000" />
-      <workItem from="1557242621428" duration="5394000" />
+      <workItem from="1557242621428" duration="5532000" />
+      <workItem from="1557309574108" duration="43000" />
+      <workItem from="1557313431610" duration="811000" />
+      <workItem from="1557477511240" duration="34000" />
+      <workItem from="1557477647228" duration="166000" />
+      <workItem from="1557478231164" duration="469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="312471000" />
+    <option name="totallyTimeSpent" value="314132000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -280,7 +283,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.15201466" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15750916" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -298,8 +301,8 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info active="true" anchor="right" id="Run" order="4" sideWeight="0.71195096" side_tool="true" visible="true" weight="0.16547619" />
-      <window_info anchor="right" id="Messages" order="5" sideWeight="0.28804904" visible="true" weight="0.16547619" />
+      <window_info anchor="right" id="Run" order="4" sideWeight="0.7129436" side_tool="true" weight="0.32783884" />
+      <window_info anchor="right" id="Messages" order="5" sideWeight="0.28705636" visible="true" weight="0.32783884" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,17 +396,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/iosfwd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
           <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="18" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NumericalMethods.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -414,10 +424,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NumericalMethods.h">
+    <entry file="file://$PROJECT_DIR$/startFunctions.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="270">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#49#76#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -431,20 +444,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/startFunctions.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="226" selection-start-line="226" selection-end-line="227" selection-end-column="57" />
-          <folding>
-            <element signature="e#49#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NumericalMethods.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4755">
-          <caret line="317" column="24" lean-forward="true" selection-start-line="317" selection-start-column="24" selection-end-line="317" selection-end-column="24" />
+        <state relative-caret-position="346">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
         </state>
       </provider>
     </entry>

@@ -17,13 +17,13 @@ void obtainIntegralValue(double long * analyticalSolution, bool simpleIntegral){
     printIntegralInformation(&calculations, simpleIntegral);
 
 
-//    calculateIntegrals(&calculations);
+    calculateIntegrals(&calculations);
 
 //    analyzeErrors(&calculations);
 //
 //    analyzeCPUTimes(&calculations);
 //
-    analyzeCorrelationTime(&calculations);
+//    analyzeCorrelationTime(&calculations);
 
 
 }
