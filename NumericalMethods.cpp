@@ -2,30 +2,6 @@
 // Created by Antek Szadaj on 2019-02-19.
 //
 
-/*
-
- warning (regarding simpleMonteCarlo()-method)
-
- since p(x) = 2/sqrt(pi) * exp(-x^2) cannot be solved for x analytically, impose the box muller method
- generate two gaussian distributions, such that
-
-    p(\rho,\theta) d\rho d\theta = 2/sqrt(pi) exp(-\rho) d\rho d\theta
-
- is obtained. Therefore, the distributions are as follows
-
-     x = \sqrt(\rho) \cos \theta,
-     y = \sqrt(\rho) \sin \theta,
-
- where \rho is distributed according to \exp(-\rho), which yields \rho = -\ln(r),
- with r uniformly distributed on [0,1] and \theta is uniformly distributed on [0,\pi/2].
- This can be seen directly from
-
-    p(\rho,\theta) d\rho d\theta = 2/sqrt(pi) d\theta exp(-\rho) d\rho
-                                   __________________ ________________
-                                       = \theta            = \rho
-*/
-
-
 #include "NumericalMethods.h"
 
 namespace plt = matplotlibcpp;
@@ -40,7 +16,7 @@ NumericalMethods::NumericalMethods(const double long * analyticalSolution, bool 
     rejectedSamples = 0;
 
     lowerLimit = 0.0001;
-    higherLimit = 10000;
+    higherLimit = 1000;
 
     printMessage = true;
     CPUTimeAnalysis = false;
@@ -58,19 +34,19 @@ NumericalMethods::NumericalMethods(const double long * analyticalSolution, bool 
 void NumericalMethods::simpson() {
 
     auto * x_i = new double[samples];
-    float simpsonsConstant = 1/3.0 * stepSize;
+    float constant = 1/3.0 * stepSize;
 
     resetValues();
     startClock();
 
     // add the boundary values of the Simpson's method
-    integralResult += (getMainFunction(&lowerLimit) + getMainFunction(&higherLimit)) * simpsonsConstant;
+    integralResult += (getMainFunction(&lowerLimit) + getMainFunction(&higherLimit)) * constant;
 
     for (unsigned int i = 1; i < samples; i++){
 
         x_i[i] = lowerLimit + i * stepSize;
 
-        integralResult += 2*(i%2+1) * getMainFunction(&x_i[i]) * simpsonsConstant;
+        integralResult += 2*(i%2+1) * getMainFunction(&x_i[i]) * constant;
 
         // Check if the value reaches error level
         if (CPUTimeAnalysis && (std::abs(integralResult - analyticalSolution) < errorLevel)){
@@ -97,29 +73,29 @@ void NumericalMethods::simpleMonteCarlo(){
     startClock();
 
     // Sample \rho on sqrt(-ln(r)) with r on [0,1] and \theta on [0, pi/2] for randomizing x
-    std::random_device randomDevice_theta, randomDevice_R;
-    std::mt19937 randomEngine_theta(randomDevice_theta()), randomEngine_R(randomDevice_R());
-    std::uniform_real_distribution<> distribution_theta(0.0, M_PI/2.0), distribution_R(0.0, 1.0);
+    // Start engines to generate r = [0,1] and \theta = [0, pi/2]
+    std::random_device thetaDevice, RDevice;
+    std::mt19937 thetaEngine(thetaDevice()), REngine(RDevice());
+    std::uniform_real_distribution<> theta_dist(0.0, M_PI/2.0), r_dist(0.0, 1.0);
 
     for (unsigned int i = 0; i < samples; i++){
 
         // x randomized based on \rho and \theta or the multiple choice pdf
         if (simpleIntegral)
-            x_i[i] = std::sqrt(-std::log(distribution_R(randomEngine_R))) *
-                    std::cos(distribution_theta(randomEngine_theta));
+            x_i[i] = std::sqrt(-std::log(r_dist(REngine))) *
+                    std::cos(theta_dist(thetaEngine));
 
         else{
 
-            nonUniformDistribution = distribution_R(randomEngine_R);
-            randomizedRValue = distribution_R(randomEngine_R);
-            randomizedNValue = distribution_R(randomEngine_R);
+            nonUniformDistribution = r_dist(REngine);
+            randomizedRValue = r_dist(REngine);
+            randomizedNValue = r_dist(REngine);
 
             x_i[i] = getSampledPDFValue(&nonUniformDistribution, &randomizedRValue, &randomizedNValue);
 
         }
 
         integralResult += getMainFunction(&x_i[i]) / getPDF(&x_i[i]) / samples;
-
 
         // Check if the value reaches error level
         if (CPUTimeAnalysis && (std::abs(integralResult - analyticalSolution) < errorLevel)){
@@ -132,7 +108,8 @@ void NumericalMethods::simpleMonteCarlo(){
     getStandardError(x_i);
 
     printResults("Simple Monte Carlo");
-    exportRandomizedSamples(x_i, "monte_carlo");
+
+//    exportRandomizedSamples(x_i, "monte_carlo");
 
     delete [] x_i;
 
@@ -141,7 +118,7 @@ void NumericalMethods::simpleMonteCarlo(){
 // Generate samples using Metropolis algorithm (The rejected samples are included in the integral)
 void NumericalMethods::metropolis() {
 
-    double transitionProbability, x_trial;
+    double x_trial, transProb;
     auto * x_i = new double[samples];
 
     resetValues();
@@ -152,21 +129,21 @@ void NumericalMethods::metropolis() {
     startClock();
 
     // Create distribution for the range [0,1]
-    std::random_device randomDevice;
-    std::mt19937 randomEngine(randomDevice());
-    std::uniform_real_distribution<> distribution(0.0, 1.0);
+    std::random_device device;
+    std::mt19937 engine(device());
+    std::uniform_real_distribution<> r_distr(0.0, 1.0);
 
     // Create random walk
     for (unsigned int i = 0; i < samples; i++){
 
-        x_trial = x_i[i] + (2.0 * distribution(randomEngine) - 1.0) * delta;
-        transitionProbability = getPDF(&x_trial) / getPDF(&x_i[i]);
+        x_trial = x_i[i] + (2.0 * r_distr(engine) - 1.0) * delta;
+        transProb = getPDF(&x_trial) / getPDF(&x_i[i]);
 
         // Imposed criterion on p(x) = 0 for x < a and x > b.
         if (x_trial < lowerLimit || x_trial > higherLimit)
-            transitionProbability = 0.0;
+            transProb = 0.0;
 
-        if (transitionProbability > 1.0 || transitionProbability > distribution(randomEngine))
+        if (transProb > 1.0 || transProb > r_distr(engine))
             x_i[i+1] = x_trial;
 
         else {
@@ -302,10 +279,10 @@ void NumericalMethods::exportCorrelationTimePlot(double x_i []){
     markers[0] = "b--o";
     markers[1] = "r--o";
     markers[2] = "g--o";
+    plt::figure_size(1200, 780);
 
     // this decreases the precision of digits for variable delta
     std::ostringstream out;
-
 
     int numberOfValues = 50;
 
@@ -315,9 +292,17 @@ void NumericalMethods::exportCorrelationTimePlot(double x_i []){
     for (int i = 0; i < 3; i++){
 
         delta = std::pow(10,i-1);
+
+//        if (i == 1)
+//            numberOfValues = 20;
+//        else
+//            numberOfValues = 50;
+
+
         createRandomWalk(x_i);
 
-        std::cout << std::endl << "delta: " << delta << std::endl << std::endl;
+        std::cout << std::endl << "delta: " << delta << std::endl;
+
 
         for (int i = 0; i < numberOfValues; i++){
 
@@ -329,17 +314,19 @@ void NumericalMethods::exportCorrelationTimePlot(double x_i []){
         out.precision(1);
         out << std::fixed << delta;
 
-
         plt::title("Autocorrelation function values for various $\\delta$");
         plt::xlabel("Sample j");
         plt::ylabel("C(j)");
         plt::named_semilogy( "$\\delta$ = " + out.str(), x_values, correlationValues, markers[i]);
         out.str("");
+        std::fill(correlationValues.begin(), correlationValues.end(), 0.0);
+        std::fill(x_values.begin(), x_values.end(), 0.0);
 
     }
 
-    exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/"
+    exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/report/figures/"
                         "distribution_correlationTime_"+getFunctionName()+".pdf";
+
     plt::grid(true);
     plt::legend();
     plt::xlim(1.0, 80.0);
@@ -391,34 +378,27 @@ double NumericalMethods::getPDF(double * x){
 }
 
 
-double NumericalMethods::getSampledPDFValue(double * nonUniformDistribution, double * randomizedRValue,
-        double * randomizedNValue ){
+double NumericalMethods::getSampledPDFValue(double * randomizedPartOfPDF, double * randomizedRValue,
+        double * randomizedNValue){
 
-    double waveNumberN, sampledOnRangeXValue;
+    double waveN, sampledXValue;
     double exponentialLimit = 2*std::pow(M_PI,2)/(4+M_PI+2*std::pow(M_PI,2));
     double linearLimit = exponentialLimit + M_PI/(4+M_PI+2*std::pow(M_PI,2));
 
 
-    if (*nonUniformDistribution < exponentialLimit){
-        sampledOnRangeXValue = 2/M_PI - std::log(*randomizedRValue);
-    }
+    if (*randomizedPartOfPDF < exponentialLimit)
+        sampledXValue = 2/M_PI - std::log(*randomizedRValue);
 
-
-    else if(*nonUniformDistribution < linearLimit){
-        sampledOnRangeXValue = 1/M_PI + std::sqrt(*randomizedRValue);
-    }
-
+    else if(*randomizedPartOfPDF < linearLimit)
+        sampledXValue = 1/M_PI + std::sqrt(*randomizedRValue);
 
     else{
-
-        waveNumberN = (int)(1.0/ *randomizedNValue);
-        sampledOnRangeXValue = (std::acos(1.0-2.0**randomizedRValue) + waveNumberN * M_PI)/
-                (waveNumberN * std::pow(M_PI,2) * (waveNumberN + 1));
+        waveN = (int)(1.0/ *randomizedNValue);
+        sampledXValue = (std::acos(1.0-2.0**randomizedRValue) + waveN * M_PI)/
+                (waveN * std::pow(M_PI,2) * (waveN + 1));
     }
-
-    return sampledOnRangeXValue;
+    return sampledXValue;
 }
-
 
 
 
@@ -433,6 +413,7 @@ void NumericalMethods::exportRandomizedSamples(double x_i[], std::string functio
     for (int i = 0; i < samples; i++)
         x[i] = x_i[i];
 
+    plt::figure_size(1200, 780);
     plt::hist(x, 900);
     plt::title(std::to_string(integralResult));
     plt::save(exportDestination);

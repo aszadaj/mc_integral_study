@@ -14,8 +14,13 @@
     <list default="true" id="83387ee9-cc00-4cbe-91d7-c9ead5ea9dcb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NumericalMethods.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/NumericalMethods.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/mc_integral_study" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/mc_integral_study" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/startFunctions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/startFunctions.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/startFunctions.h" beforeDir="false" afterPath="$PROJECT_DIR$/startFunctions.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+            <state relative-caret-position="270">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -42,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/startFunctions.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="330">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#49#76#0" expanded="true" />
               </folding>
@@ -54,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/startFunctions.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="98" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
+            <state relative-caret-position="210">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
               <folding>
                 <element signature="e#124#155#0" expanded="true" />
               </folding>
@@ -66,8 +71,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NumericalMethods.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="673">
+              <caret line="93" column="39" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -75,8 +80,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NumericalMethods.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="390">
+              <caret line="26" column="79" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="79" />
+              <folding>
+                <element signature="e#128#147#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,10 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PDFExpFunction</find>
-      <find>printIntegralInformation</find>
-      <find>n</find>
-      <find>plt</find>
       <find>getHigherLimit</find>
       <find>this</find>
       <find>sampledUniformXValue</find>
@@ -99,22 +103,26 @@
       <find>metropolis</find>
       <find>sampledOnRangeXValue</find>
       <find>getRandomWalkStartValue</find>
-      <find>analyzeCPUTimes</find>
-      <find>analyzeErrors</find>
-      <find>getStandardError</find>
-      <find>exportErrorPlot</find>
       <find>getSampled</find>
-      <find>getSampledPDFValue</find>
       <find>calculateIntegrals</find>
-      <find>getAutocorrelationValue</find>
       <find>vector</find>
       <find>correlationTime</find>
       <find>exportDestination</find>
-      <find>exportCorrelationTimePlot</find>
-      <find>exportRandomizedSamples</find>
-      <find>analyzeCorrelationTime</find>
       <find>xlim</find>
       <find>getPDF</find>
+      <find>iterations</find>
+      <find>printResults</find>
+      <find>getStandardError</find>
+      <find>exportRandomizedSamples</find>
+      <find>exportErrorPlot</find>
+      <find>correlationTimeAnalysis</find>
+      <find>exportCorrelationTimePlot</find>
+      <find>getAutocorrelationValue</find>
+      <find>figure_size</find>
+      <find>analyzeErrors</find>
+      <find>analyzeCorrelationTime</find>
+      <find>getSampledPDFValue</find>
+      <find>analyzeCPUTimes</find>
     </findStrings>
     <replaceStrings>
       <replace>sum &lt;&lt;  &quot;, Relative error: &quot; &lt;&lt; std::abs(sum - analyticalSolution)*100.0/sum &lt;&lt;  std::endl;</replace>
@@ -135,18 +143,19 @@
         <option value="$PROJECT_DIR$/fparser4/README.md" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/startFunctions.h" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/NumericalMethods.h" />
-        <option value="$PROJECT_DIR$/startFunctions.cpp" />
+        <option value="$PROJECT_DIR$/startFunctions.h" />
         <option value="$PROJECT_DIR$/NumericalMethods.cpp" />
+        <option value="$PROJECT_DIR$/startFunctions.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="840" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1706" />
+    <option name="width" value="854" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -154,6 +163,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -165,7 +175,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -264,11 +273,17 @@
       <workItem from="1557477511240" duration="34000" />
       <workItem from="1557477647228" duration="166000" />
       <workItem from="1557478231164" duration="469000" />
+      <workItem from="1557671266472" duration="839000" />
+      <workItem from="1557674227047" duration="367000" />
+      <workItem from="1557680973717" duration="9000" />
+      <workItem from="1557681015869" duration="8000" />
+      <workItem from="1557681044902" duration="11559000" />
+      <workItem from="1557772055266" duration="448000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="314132000" />
+    <option name="totallyTimeSpent" value="327362000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -280,10 +295,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
+    <frame x="1706" y="0" width="854" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15750916" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.22041303" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -301,8 +316,8 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="Run" order="4" sideWeight="0.7129436" side_tool="true" weight="0.32783884" />
-      <window_info anchor="right" id="Messages" order="5" sideWeight="0.28705636" visible="true" weight="0.32783884" />
+      <window_info active="true" anchor="right" id="Run" order="4" sideWeight="0.717119" side_tool="true" visible="true" weight="0.36568987" />
+      <window_info anchor="right" id="Messages" order="5" sideWeight="0.282881" visible="true" weight="0.36568987" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,44 +425,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NumericalMethods.h">
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/string">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/startFunctions.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#49#76#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="4028" selection-start-line="4028" selection-end-line="4028" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/startFunctions.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="98" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
+        <state relative-caret-position="210">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
           <folding>
             <element signature="e#124#155#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/NumericalMethods.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="79" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="79" />
+          <folding>
+            <element signature="e#128#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/startFunctions.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#49#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NumericalMethods.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+        <state relative-caret-position="673">
+          <caret line="93" column="39" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="39" />
         </state>
       </provider>
     </entry>

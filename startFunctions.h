@@ -16,7 +16,7 @@ void analyzeErrors(NumericalMethods *);
 void analyzeCorrelationTime(NumericalMethods *);
 void analyzeCPUTimes(NumericalMethods *);
 
-void exportErrorPlot (std::vector<double> *, std::vector<std::vector <double>> *, int, float, bool);
+void exportErrorPlot (std::vector<double> *, std::vector<std::vector <double>> *, int, float, bool, int);
 void printIntegralInformation(NumericalMethods *, bool);
 
 #endif //REPORT_CODE_STARTFUNCTIONS_H

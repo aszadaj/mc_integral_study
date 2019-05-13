@@ -19,12 +19,11 @@ void obtainIntegralValue(double long * analyticalSolution, bool simpleIntegral){
 
     calculateIntegrals(&calculations);
 
-//    analyzeErrors(&calculations);
-//
-//    analyzeCPUTimes(&calculations);
-//
-//    analyzeCorrelationTime(&calculations);
+    analyzeErrors(&calculations);
 
+    analyzeCPUTimes(&calculations);
+
+    analyzeCorrelationTime(&calculations);
 
 }
 
@@ -36,8 +35,8 @@ void calculateIntegrals(NumericalMethods * calculations){
 
     calculations->delta = 0.5;
 
-//    calculations->simpson();
-//    calculations->simpleMonteCarlo();
+    calculations->simpson();
+    calculations->simpleMonteCarlo();
     calculations->metropolis();
 
     std::cout << std::endl << "Done performing integral calculation." << std::endl << std::endl << std::endl;;
@@ -70,12 +69,10 @@ void analyzeErrors(NumericalMethods * calculations) {
     calculations->printMessage = false;
 
     std::cout << "Start error calculation." << std::endl << std::endl;
-
     std::cout << "Maximum walking step, aka delta: " << calculations->delta << std::endl;
-    std::cout << "Samples: " << calculations->getSamples() << std::endl;
     std::cout << "Number of iterations per 10^N: " << numberOfIterationsPerSampleNumber << std::endl << std::endl;
 
-    for (int j = 0; j <= tenfold-1; j++) {
+    for (int j = 0; j < tenfold; j++) {
 
         calculations->setSamples((int)std::pow(10, j+1));
 
@@ -135,7 +132,7 @@ void analyzeErrors(NumericalMethods * calculations) {
     }
 
     exportErrorPlot(&x_ranges, &errors, numberOfIterationsPerSampleNumber,
-            calculations->delta, calculations->simpleIntegral);
+            calculations->delta, calculations->simpleIntegral, numberOfIterationsPerSampleNumber);
 
     std::cout << std::endl << "Done performing error analysis." << std::endl << std::endl << std::endl;
 
@@ -147,13 +144,16 @@ void analyzeCPUTimes(NumericalMethods * calculations){
     std::cout << "Start CPU time analysis." << std::endl << std::endl;
 
     calculations->setSamples(1e6);
-    calculations->delta = 2;
 
-    if (calculations->simpleIntegral)
+    if (calculations->simpleIntegral){
         calculations->errorLevel =1.0e-3;
-    else
-        calculations->errorLevel =1.0e-2;
+        calculations->delta = 1;
+    }
 
+    else{
+        calculations->errorLevel =1.0e-3;
+        calculations->delta = 10;
+    }
 
     calculations->CPUTimeAnalysis = true;
     calculations->printMessage = true;
@@ -189,27 +189,29 @@ void analyzeCorrelationTime(NumericalMethods * calculations){
     calculations->printMessage = false;
     calculations->metropolis();
 
-    std::cout << "Done with correlation time analysis." << std::endl << std::endl << std::endl;
+    std::cout << std::endl << std::endl << "Done with correlation time analysis." << std::endl << std::endl << std::endl;
 }
 
 // uses MATPLOTLIB to show the results.
 void exportErrorPlot(std::vector<double> * x_ranges, std::vector<std::vector <double>> * errors,
-        int numberOfIterationsPerSampleNumber, float delta, bool simpleIntegral){
+        int numberOfIterationsPerSampleNumber, float delta, bool simpleIntegral, int iterations){
 
     std::string exportDestination;
-
-    if (simpleIntegral)
-        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/"
-                                    "RMS_ASE_METROPOLIS_MC_FRAC_INTEGRAL.pdf";
-    else
-        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/"
-                            "RMS_ASE_METROPOLIS_MC_OSC_INTEGRAL.pdf";
 
     // this decreases the precision of digits for variable delta
     std::ostringstream out;
     out.precision(1);
     out << std::fixed << delta;
     out.str();
+
+    if (simpleIntegral)
+        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/report/figures/"
+                            "error_simple_delta_"+std::to_string((int)(delta))+"_iter_"+std::to_string(iterations)+".pdf";
+    else
+        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/report/figures/"
+                            "error_oscillatory_integral_delta_"+std::to_string((int)(delta))+"_iter_"+std::to_string(iterations)+".pdf";
+
+
 
     // plot the figure with defined attributes
     plt::figure_size(1200, 780);

@@ -17,7 +17,7 @@ int main() {
     // 3. p(x) = N * exp(2/pi - x) for x > 2/pi
 
     analyticalSolution = M_PI/2;
-//    obtainIntegralValue(&analyticalSolution, false);
+    obtainIntegralValue(&analyticalSolution, false);
 
     return 0;
 
