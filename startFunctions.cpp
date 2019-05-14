@@ -1,6 +1,3 @@
-//
-// Created by Antek Szadaj on 2019-03-13.
-//
 
 #include "startFunctions.h"
 #include <string>
@@ -9,20 +6,29 @@
 namespace plt = matplotlibcpp;
 
 
-void obtainIntegralValue(double long * analyticalSolution, bool simpleIntegral){
+void obtainIntegralValue(bool simpleIntegral){
 
-    // Default sample = 1M, delta = 1.0
-    NumericalMethods calculations = NumericalMethods(analyticalSolution, simpleIntegral);
+    // Create the object with all methods.
+    // Set default value N = 10^6 and delta = 1
+    NumericalMethods calculations = NumericalMethods(simpleIntegral);
 
     printIntegralInformation(&calculations, simpleIntegral);
 
 
+    // This method calculates the integral using all three methods, once.
     calculateIntegrals(&calculations);
 
+    // This takes the RMS error of 100 iterations for N = 10, 100, ... 10^6
+    // and exports it as a plot
     analyzeErrors(&calculations);
 
+    // This analyzes for N = 10^6 how quickly the integral reaches
+    // an error level
     analyzeCPUTimes(&calculations);
 
+
+    // This exports 20-50 samples of the autocorrelation function
+    // and plots the results for delta = 0.1, 1, 10
     analyzeCorrelationTime(&calculations);
 
 }
@@ -30,10 +36,6 @@ void obtainIntegralValue(double long * analyticalSolution, bool simpleIntegral){
 void calculateIntegrals(NumericalMethods * calculations){
 
     std::cout << "Start usual integral calculation." << std::endl << std::endl;
-
-    calculations->setSamples(1e5);
-
-    calculations->delta = 0.5;
 
     calculations->simpson();
     calculations->simpleMonteCarlo();
@@ -53,7 +55,10 @@ void analyzeErrors(NumericalMethods * calculations) {
     // Perform the RMS calculations per 10^N
     int numberOfIterationsPerSampleNumber = 100;
 
-    calculations->delta = 10;
+    if (calculations->simpleIntegral)
+        calculations->delta = 1;
+    else
+        calculations->delta = 10;
 
     double squared_deviation_error_metropolis, standard_error_average_metropolis;
     double squared_deviation_error_simple_monte_carlo, standard_error_average_simple_monte_carlo;
@@ -84,6 +89,7 @@ void analyzeErrors(NumericalMethods * calculations) {
 
         for (int i = 0; i < numberOfIterationsPerSampleNumber; i++) {
 
+
             calculations->metropolis();
 
             if (calculations->integralResult != 0.0) {
@@ -95,6 +101,7 @@ void analyzeErrors(NumericalMethods * calculations) {
             }
             else
                 rejectedResultsMetropolis++;
+
 
             calculations->simpleMonteCarlo();
 
@@ -161,19 +168,16 @@ void analyzeCPUTimes(NumericalMethods * calculations){
     calculations->simpson();
 
     std::cout << "Simpson's method: " << calculations->integralTime << " ms" << std::endl;
-    std::cout << "Number of samples: " << calculations->sampleLevel << std::endl;
     std::cout << "Error level: " << calculations->errorLevel << std::endl << std::endl;
 
     calculations->simpleMonteCarlo();
 
     std::cout << "Simple Monte Carlo method: " << calculations->integralTime << " ms" << std::endl;
-    std::cout << "Number of samples: " << calculations->sampleLevel << std::endl;
     std::cout << "Error level: " << calculations->errorLevel << std::endl << std::endl;
 
     calculations->metropolis();
 
     std::cout << std::endl << "Metropolis method: " << calculations->integralTime << " ms" << std::endl;
-    std::cout << "Number of samples: " << calculations->sampleLevel << std::endl;
     std::cout << "Error level: " << calculations->errorLevel << std::endl << std::endl;
 
     std::cout << "Done with CPU time analysis." << std::endl << std::endl << std::endl;

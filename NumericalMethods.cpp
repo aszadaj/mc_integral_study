@@ -1,17 +1,14 @@
-//
-// Created by Antek Szadaj on 2019-02-19.
-//
 
 #include "NumericalMethods.h"
 
 namespace plt = matplotlibcpp;
 
 // Constructor
-NumericalMethods::NumericalMethods(const double long * analyticalSolution, bool simpleIntegral) {
+NumericalMethods::NumericalMethods(bool simpleIntegral) {
 
     integralResult = integralTime = standardError = errorFromRealResult = 0.0;
     delta = 1.0;
-    samples = sampleLevel = 1000000;
+    samples = 1000000;
     errorLevel = 1.0e-4;
     rejectedSamples = 0;
 
@@ -23,7 +20,11 @@ NumericalMethods::NumericalMethods(const double long * analyticalSolution, bool 
     correlationTimeAnalysis = false;
 
     this->simpleIntegral = simpleIntegral;
-    this->analyticalSolution = *analyticalSolution;
+
+    if (simpleIntegral)
+        analyticalSolution = 0.5;
+    else
+        analyticalSolution = M_PI/2;
 
     stepSize = (higherLimit-lowerLimit)/samples;
 
@@ -49,13 +50,12 @@ void NumericalMethods::simpson() {
         integralResult += 2*(i%2+1) * getMainFunction(&x_i[i]) * constant;
 
         // Check if the value reaches error level
-        if (CPUTimeAnalysis && (std::abs(integralResult - analyticalSolution) < errorLevel)){
-            sampleLevel = i;
+        if (CPUTimeAnalysis && (std::abs(integralResult - analyticalSolution) < errorLevel))
             break;
-        }
     }
 
     stopClock();
+
     printResults("Simpson's");
 
     delete [] x_i;
@@ -98,18 +98,14 @@ void NumericalMethods::simpleMonteCarlo(){
         integralResult += getMainFunction(&x_i[i]) / getPDF(&x_i[i]) / samples;
 
         // Check if the value reaches error level
-        if (CPUTimeAnalysis && (std::abs(integralResult - analyticalSolution) < errorLevel)){
-            sampleLevel = i;
+        if (CPUTimeAnalysis && (std::abs(integralResult - analyticalSolution) < errorLevel))
             break;
-        }
     }
 
     stopClock();
     getStandardError(x_i);
 
     printResults("Simple Monte Carlo");
-
-//    exportRandomizedSamples(x_i, "monte_carlo");
 
     delete [] x_i;
 
@@ -154,23 +150,17 @@ void NumericalMethods::metropolis() {
         integralResult += getMainFunction(&x_i[i]) / getPDF(&x_i[i]) / samples;
 
         // Check if the value reaches a set error level
-        if (CPUTimeAnalysis && (std::abs(integralResult - analyticalSolution) < errorLevel)){
-            sampleLevel = i;
+        if (CPUTimeAnalysis && (std::abs(integralResult - analyticalSolution) < errorLevel))
             break;
-        }
     }
 
     stopClock();
-
     getStandardError(x_i);
-
 
     if (correlationTimeAnalysis)
         exportCorrelationTimePlot(x_i);
 
-
     printResults("Metropolis");
-//    exportRandomizedSamples(x_i, "metropolis");
 
     delete [] x_i;
 
@@ -401,27 +391,6 @@ double NumericalMethods::getSampledPDFValue(double * randomizedPartOfPDF, double
 }
 
 
-
-void NumericalMethods::exportRandomizedSamples(double x_i[], std::string function){
-
-
-    std::string exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/"
-                                    "distribution_"+function+".pdf";
-
-
-    std::vector<double> x(samples);
-    for (int i = 0; i < samples; i++)
-        x[i] = x_i[i];
-
-    plt::figure_size(1200, 780);
-    plt::hist(x, 900);
-    plt::title(std::to_string(integralResult));
-    plt::save(exportDestination);
-
-    plt::close();
-}
-
-
 void NumericalMethods::printResults(std::string methodName){
 
     if (not printMessage)
@@ -464,7 +433,6 @@ void NumericalMethods::resetValues(){
 
     integralResult = integralTime = errorFromRealResult = standardError =  0.0;
     rejectedSamples = 0;
-    sampleLevel = samples;
 
 }
 
@@ -477,7 +445,6 @@ unsigned int NumericalMethods::getSamples() const {
 void NumericalMethods::setSamples(unsigned int samples) {
 
     NumericalMethods::samples = samples;
-    NumericalMethods::sampleLevel = samples;
     NumericalMethods::stepSize = (higherLimit-lowerLimit)/samples;
 
 }

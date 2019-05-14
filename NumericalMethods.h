@@ -1,6 +1,3 @@
-//
-// Created by Antek Szadaj on 2019-02-19.
-//
 
 #ifndef REPORT_CODE_NUMERICALMETHODS_H
 #define REPORT_CODE_NUMERICALMETHODS_H
@@ -13,20 +10,19 @@
 
 class NumericalMethods {
 
-    double lowerLimit, higherLimit, stepSize;
-
     unsigned int samples;
+    double lowerLimit, higherLimit, stepSize;
 
 public:
 
     double long analyticalSolution;
     double integralResult, standardError, errorFromRealResult, integralTime, errorLevel;
-    unsigned int sampleLevel, rejectedSamples;
+    unsigned int rejectedSamples;
     float delta;
 
     bool printMessage, CPUTimeAnalysis, simpleIntegral, correlationTimeAnalysis;
 
-    explicit NumericalMethods(const double long *, bool = true);
+    explicit NumericalMethods(bool = true);
 
     void simpson();
     void simpleMonteCarlo();
@@ -55,8 +51,6 @@ public:
     unsigned int getSamples() const;
 
     std::string getFunctionName();
-
-    void exportRandomizedSamples(double [], std::string);
 
 };
 
