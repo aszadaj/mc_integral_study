@@ -1,11 +1,12 @@
 # Monte Carlo Integral Study
 
-Project in the course SI2530 Computational Physics (KTH Royal Institute of Technology)
+Project in the course SI2530 Computational Physics (KTH Royal Institute of Technology, 2019)
 
 
-The code is built to analyze two integrals using Simpson's method, Simple Monte Carlo and a Metropolis algorithm.
-Investigation such as error level, correlation time (for Metropolis method), RMS and standard errors and general 
-comparisons of those methods. 
+The software analyzes two integrals using Simpson's method, Simple Monte Carlo and a Metropolis algorithm. 
+Main aspect is to investigate CPU time, that is how quickly the methods reaches an error level, the correlation time,
+which sample is correlated with the distribution using the Metropolis method and comparisons between RMS and standard
+error. The output is either a log on the console window or in form of a plot.
 
 # How to run
 
@@ -21,9 +22,26 @@ can be compiled with the input in terminal on macOS by
     
  Another way is to open the project, that is the main folder, that is ```mc_integral_study``` in CLion and to build
  and run with ```CMD+R```.
+ 
 
+# Functions
 
-# Output
+The main class containing the relevant methods are in ```NumericalMethods.cpp```. Inside ```startFunctions.cpp``` are
+four functions which uses ```NumericalMethods```-object, called ```calculations``` to analyze the integrals.
 
-The output is in form of console log or a plot using ```matplotlibcpp```, which are used as a reference in the report
-(to be appeared).
+Obtains the integral value using N=10e6 samples and with random walk delta = 1.
+
+    calculateIntegral(&calculations);
+
+Analyzes errors by exporting a plot with RMS error and average standard error for various N.
+   
+    analyzeErrors(&calculations);
+
+Obtains information in the console window how quickly the methods reaches an error level
+
+    analyzeCPUTimes(&calculations);
+
+Gets correlation times using only the Metropolis method and prints it to the console window. 
+
+    analyzeCorrelationTime(&calculations);
+    

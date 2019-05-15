@@ -50,8 +50,6 @@ public:
     double getAutocorrelationValue(double [], int);
     unsigned int getSamples() const;
 
-    std::string getFunctionName();
-
 };
 
 

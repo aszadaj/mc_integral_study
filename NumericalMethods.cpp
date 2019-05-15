@@ -283,11 +283,13 @@ void NumericalMethods::exportCorrelationTimePlot(double x_i []){
 
         delta = std::pow(10,i-1);
 
-//        if (i == 1)
-//            numberOfValues = 20;
-//        else
-//            numberOfValues = 50;
+        if (simpleIntegral){
 
+            if (i == 1)
+                numberOfValues = 20;
+            else
+                numberOfValues = 50;
+        }
 
         createRandomWalk(x_i);
 
@@ -314,8 +316,15 @@ void NumericalMethods::exportCorrelationTimePlot(double x_i []){
 
     }
 
+    std::string functionName = "simpleIntegral";
+
+    if (!simpleIntegral)
+        functionName = "oscillatory";
+
+
+
     exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/report/figures/"
-                        "distribution_correlationTime_"+getFunctionName()+".pdf";
+                        "distribution_correlationTime_"+functionName+".pdf";
 
     plt::grid(true);
     plt::legend();
@@ -457,15 +466,4 @@ double NumericalMethods::getLowerLimit() const {
 
 double NumericalMethods::getHigherLimit() const {
     return higherLimit;
-}
-
-
-std::string NumericalMethods::getFunctionName(){
-
-
-    if (simpleIntegral)
-        return "simpleIntegral";
-    else
-        return "oscillatory";
-
 }
