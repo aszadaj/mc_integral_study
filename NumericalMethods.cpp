@@ -323,7 +323,7 @@ void NumericalMethods::exportCorrelationTimePlot(double x_i []){
 
 
 
-    exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/report/figures/"
+    exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/material/results_code/"
                         "distribution_correlationTime_"+functionName+".pdf";
 
     plt::grid(true);

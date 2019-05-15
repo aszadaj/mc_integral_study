@@ -14,7 +14,6 @@ void obtainIntegralValue(bool simpleIntegral){
 
     printIntegralInformation(&calculations, simpleIntegral);
 
-
     // This method calculates the integral using all three methods, once.
     calculateIntegrals(&calculations);
 
@@ -25,7 +24,6 @@ void obtainIntegralValue(bool simpleIntegral){
     // This analyzes for N = 10^6 how quickly the integral reaches
     // an error level
     analyzeCPUTimes(&calculations);
-
 
     // This exports 20-50 samples of the autocorrelation function
     // and plots the results for delta = 0.1, 1, 10
@@ -209,10 +207,10 @@ void exportErrorPlot(std::vector<double> * x_ranges, std::vector<std::vector <do
     out.str();
 
     if (simpleIntegral)
-        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/report/figures/"
+        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/material/results_code/"
                             "error_simple_delta_"+std::to_string((int)(delta))+"_iter_"+std::to_string(iterations)+".pdf";
     else
-        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/report/figures/"
+        exportDestination = "/Users/aszadaj/Desktop/SI2530 Computational Physics/Project/material/results_code/"
                             "error_oscillatory_integral_delta_"+std::to_string((int)(delta))+"_iter_"+std::to_string(iterations)+".pdf";
 
 
